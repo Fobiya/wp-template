@@ -1,0 +1,111 @@
+
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-MediumItalic.eot');
+    src: local('Alegreya Medium Italic'), local('Alegreya-MediumItalic'),
+        url('Alegreya-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-MediumItalic.woff') format('woff'),
+        url('Alegreya-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-BoldItalic.eot');
+    src: local('Alegreya Bold Italic'), local('Alegreya-BoldItalic'),
+        url('Alegreya-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-BoldItalic.woff') format('woff'),
+        url('Alegreya-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-Black.eot');
+    src: local('Alegreya Black'), local('Alegreya-Black'),
+        url('Alegreya-Black.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-Black.woff') format('woff'),
+        url('Alegreya-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-ExtraBoldItalic.eot');
+    src: local('Alegreya ExtraBold Italic'), local('Alegreya-ExtraBoldItalic'),
+        url('Alegreya-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-ExtraBoldItalic.woff') format('woff'),
+        url('Alegreya-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-BlackItalic.eot');
+    src: local('Alegreya Black Italic'), local('Alegreya-BlackItalic'),
+        url('Alegreya-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-BlackItalic.woff') format('woff'),
+        url('Alegreya-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-Bold.eot');
+    src: local('Alegreya Bold'), local('Alegreya-Bold'),
+        url('Alegreya-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-Bold.woff') format('woff'),
+        url('Alegreya-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-Regular.eot');
+    src: local('Alegreya Regular'), local('Alegreya-Regular'),
+        url('Alegreya-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-Regular.woff') format('woff'),
+        url('Alegreya-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-ExtraBold.eot');
+    src: local('Alegreya ExtraBold'), local('Alegreya-ExtraBold'),
+        url('Alegreya-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-ExtraBold.woff') format('woff'),
+        url('Alegreya-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-Medium.eot');
+    src: local('Alegreya Medium'), local('Alegreya-Medium'),
+        url('Alegreya-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-Medium.woff') format('woff'),
+        url('Alegreya-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('Alegreya-Italic.eot');
+    src: local('Alegreya Italic'), local('Alegreya-Italic'),
+        url('Alegreya-Italic.eot?#iefix') format('embedded-opentype'),
+        url('Alegreya-Italic.woff') format('woff'),
+        url('Alegreya-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
