@@ -4,6 +4,23 @@ wp_enqueue_script('jquery');
 
 
 
+//add_image_size( 'image_540', 540, 250, true  );
+add_image_size( 'image_700',700, 429, true );
+//add_image_size( 'image_300', 300, 200, true);
+add_image_size( 'image_400', 400, 245, true);
+
+
+add_image_size( 'slider_500',500, 306, true );
+add_image_size( 'slider_300', 300, 184, true);
+
+
+// OFF NEW REDACTOR
+
+add_filter('use_block_editor_for_post', '__return_false');
+add_filter('use_block_editor_for_page', '__return_false'); 
+
+
+
 /* CSS version, example <!--Link--><?= css();?>  */
 function css()
 {
@@ -96,10 +113,6 @@ register_nav_menus(
         'social' => __( 'Social Links Menu'),
     )
 );
-
-
-
-
 
 
 
@@ -456,3 +469,299 @@ function dimox_breadcrumbs() {
 	}
 } // end of dimox_breadcrumbs()
 
+
+
+
+// OFF STANDART STYLE
+
+  function smartwp_remove_wp_block_library_css(){
+      wp_dequeue_style( 'wp-block-library' );
+      wp_dequeue_style( 'wp-block-library-theme' );
+      wp_dequeue_style( 'wc-block-style' ); // Remove WooCommerce block CSS
+  } 
+  add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
+
+
+
+
+
+//** *Enable upload for webp image files.*/
+function webp_upload_mimes($existing_mimes) {
+    $existing_mimes['webp'] = 'image/webp';
+    return $existing_mimes;
+}
+add_filter('mime_types', 'webp_upload_mimes');
+
+
+
+//** * Enable preview / thumbnail for webp image files.*/
+function webp_is_displayable($result, $path) {
+    if ($result === false) {
+        $displayable_image_types = array( IMAGETYPE_WEBP );
+        $info = @getimagesize( $path );
+
+        if (empty($info)) {
+            $result = false;
+        } elseif (!in_array($info[2], $displayable_image_types)) {
+            $result = false;
+        } else {
+            $result = true;
+        }
+    }
+
+    return $result;
+}
+add_filter('file_is_displayable_image', 'webp_is_displayable', 10, 2);
+
+
+
+
+
+
+
+
+/**
+ * Enqueue scripts and styles.
+ */
+function partners_scripts() {
+//	wp_enqueue_style( 'partners-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+//    wp_enqueue_style('Noto', 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap', array(), false );
+//    wp_enqueue_style('Raleway', 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;900&display=swap', array(), false );
+    
+
+    wp_enqueue_style('style.css', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+
+	wp_enqueue_style('ionicons.css', get_template_directory_uri() . '/css/ionicons.css', array(), filemtime(get_template_directory() . '/css/ionicons.css'), false);
+
+
+//    wp_enqueue_style('fancybox.css', get_template_directory_uri() . '/css/jquery.fancybox.css', array(), filemtime(get_template_directory() . '/css/jquery.fancybox.css'), false);
+//    wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css', array(), false );
+
+       
+    if ( is_rtl() ) {
+      wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
+    }
+     
+
+
+	wp_enqueue_script( 'jquery', 'https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js', array(), _S_VERSION, true );
+//	wp_enqueue_script( 'fancybox', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', array(), _S_VERSION, true );
+
+//	wp_enqueue_script( 'slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array(), _S_VERSION, true );
+    // wp_enqueue_script( 'partners-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+  
+  
+//     wp_enqueue_script( 'appjs', get_template_directory_uri() . '/js/app.js', array(), _S_VERSION, true );
+
+//        wp_enqueue_script('app.js', get_template_directory_uri() . '/js/app.js', array(), filemtime(get_template_directory() . '/js/app.js'), false);
+
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'partners_scripts' );
+
+
+
+
+
+
+
+
+//function create_our_news()
+//{
+//	register_post_type('our-news', array(
+//		'labels' => array(
+//			'name'				=> __('OUR NEWS', 'our-news-admin'),
+//			'singular_name'   	=> __('OUR NEWS', 'our-news-admin'),
+//			'add_new'		 	=> __('Add OUR NEWS', 'our-news-admin'),
+//			'add_new_item'		=> __('Add OUR NEWS', 'our-news-admin'),
+//			'edit'				=> __('Edit OUR NEWS', 'our-news-admin'),
+//			'edit_item'	   		=> __('Edit OUR NEWS', 'our-news-admin'),
+//			'new_item'			=> __('New OUR NEWS', 'our-news-admin'),
+//			'all_items'	   		=> __('All OUR NEWS', 'our-news-admin'),
+//			'view'				=> __('View OUR NEWS', 'our-news-admin'),
+//			'view_item'	   		=> __('View OUR NEWS', 'our-news-admin'),
+//			'search_items'		=> __('Search OUR NEWS', 'our-news-admin'),
+//			'not_found'	   		=> __('Webinars not found', 'our-news-admin'),
+//		),
+//		'public' => true, // show in admin panel?
+//		'menu_position' => 22,
+//		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
+//		'taxonomies' => array('our-news'),
+//		'has_archive' => false,
+//		'capability_type' => 'post',
+//		'menu_icon'   => 'dashicons-text-page',
+//		'rewrite' => array('slug' => 'our-news'),
+//	));
+//}
+//add_action('init', 'create_our_news');
+//
+
+
+
+//// Registering Custom Post Type Themes
+//add_action( 'init', 'register_themepost', 20 );
+//function register_themepost() {
+//    $labels = array(
+//        'name' => _x( 'our-news', 'my_custom_post','custom' ),
+//        'singular_name' => _x( 'Theme', 'my_custom_post', 'custom' ),
+//        'add_new' => _x( 'Add New', 'my_custom_post', 'custom' ),
+//        'add_new_item' => _x( 'Add New NewsPost', 'my_custom_post', 'custom' ),
+//        'edit_item' => _x( 'Edit NewsPost', 'my_custom_post', 'custom' ),
+//        'new_item' => _x( 'New NewsPost', 'my_custom_post', 'custom' ),
+//        'view_item' => _x( 'View NewsPost', 'my_custom_post', 'custom' ),
+//        'search_items' => _x( 'Search NewsPosts', 'my_custom_post', 'custom' ),
+//        'not_found' => _x( 'No NewsPosts found', 'my_custom_post', 'custom' ),
+//        'not_found_in_trash' => _x( 'No NewsPosts found in Trash', 'my_custom_post', 'custom' ),
+//        'parent_item_colon' => _x( 'Parent NewsPost:', 'my_custom_post', 'custom' ),
+//        'menu_name' => _x( 'Our News Posts', 'my_custom_post', 'custom' ),
+//    );
+//
+//    $args = array(
+//        'labels' => $labels,
+//        'hierarchical' => false,
+//        'description' => 'Custom Theme Posts',
+//        'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'post-formats', 'custom-fields' ),
+//        'taxonomies' => array( 'post_tag','our-news_categories'),
+//        'show_ui' => true,
+//        'show_in_menu' => true,
+//        'menu_position' => 5,
+//        'menu_icon'   => 'dashicons-text-page',
+//        'show_in_nav_menus' => true,
+//        'publicly_queryable' => true,
+//        'exclude_from_search' => false,
+//        'query_var' => true,
+//        'can_export' => true,
+//        'rewrite' => array( 'slug' => 'our-news' ),
+//        'public' => true,
+//        'has_archive' => 'our-news',
+//        'capability_type' => 'post'
+//    );
+//    register_post_type( 'our-news', $args ); // max 20 character cannot contain capital letters and spaces
+//}
+
+
+// ADD CONTENT TEMPLATE 
+
+
+
+
+if ( ! defined( '_S_VERSION' ) ) {
+	// Replace the version number of the theme on each release.
+	define( '_S_VERSION', '1.0.0' );
+}
+
+if ( ! function_exists( 'partners_setup' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
+	function partners_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on partners, use a find and replace
+		 * to change 'partners' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'partners', get_template_directory() . '/languages' );
+
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support( 'post-thumbnails' );
+
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus(
+			array(
+				'menu-1' => esc_html__( 'Primary', 'partners' ),
+			)
+		);
+
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+			)
+		);
+
+		// Set up the WordPress core custom background feature.
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'partners_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
+
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		/**
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 250,
+				'width'       => 250,
+				'flex-width'  => true,
+				'flex-height' => true,
+			)
+		);
+	}
+endif;
+add_action( 'after_setup_theme', 'partners_setup' );
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-header.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';

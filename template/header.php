@@ -16,6 +16,35 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="#ffffff">
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <meta name="description" content="Description Lorem ipsum dolor sit amet."/>
+    <meta name="robots" content="noodp"/>
+
+    <link rel="canonical" href="http://" />
+
+    <meta property="og:site_name" content="Name" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Title Lorem ipsum dolor sit amet." />
+    <meta property="og:description" content="Description Lorem ipsum dolor sit amet." />
+    <meta property="og:url" content="http://" />
+
+    <meta property="og:image" content="/img.jpg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1280" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="Description Lorem ipsum dolor sit amet." />
+    <meta name="twitter:title" content="Title Lorem ipsum dolor sit amet." />
+    <meta name="twitter:image" content="/img.jpg" />
 
   
 	<?php wp_head(); ?>
