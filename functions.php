@@ -1,6 +1,5 @@
 <?php
 
-wp_enqueue_script('jquery');
 
 
 
@@ -355,6 +354,99 @@ remove_action( 'parse_request', 'rest_api_loaded' );
 // Отключаем Embeds связанные с REST API
 remove_action( 'rest_api_init', 'wp_oembed_register_route');
 remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10, 4 );
+
+
+
+
+
+
+// ---------------------------------------------------   ADD STYLE AND SCRIPT
+
+
+function add_template_scripts() {
+	wp_enqueue_style( 'th-001-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
+    wp_enqueue_style( 'style-name', get_stylesheet_uri() );
+  
+    if ( is_rtl() ) {
+      wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
+    }
+  
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+    wp_deregister_script('jquery'); // УДАЛИТЬ РАНИЕ 
+  
+    wp_enqueue_script( 'jquery');
+    wp_enqueue_script( 'script-name', get_template_directory_uri() . '/js/example.js', array('jquery'), '1.0.0', true ); // зависимость скриптов в array
+    wp_enqueue_script( 'next', get_template_directory_uri() . '/js/next.js', array(), '1.0.0', true );
+    
+    wp_localize_script('myscript', 'myPlugin', array(
+      'ajaxurl' => admin_url('admin-ajax.php'),
+    ));
+  
+  
+  
+	wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'),  '1.0.0', true  );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+  
+}
+add_action( 'wp_enqueue_scripts', 'add_template_scripts' );
+
+
+
+
+
+// DELETE STYLE WOOCOMMERCE
+
+
+function sp_woocommerce_script_cleaner() {
+    if (! is_cart() && ! is_checkout() ) {
+        wp_dequeue_style('woocommerce_frontend_styles');
+        wp_dequeue_style('woocommerce-general');
+        wp_dequeue_style('woocommerce-layout');
+        wp_dequeue_style('woocommerce-smallscreen');
+        wp_dequeue_style('woocommerce_fancybox_styles');
+        wp_dequeue_style('woocommerce_chosen_styles');
+        wp_dequeue_style('woocommerce_prettyPhoto_css');
+        wp_dequeue_script('selectWoo');
+        wp_deregister_script('selectWoo');
+        wp_dequeue_script('wc-add-payment-method');
+        wp_dequeue_script('wc-lost-password');
+        wp_dequeue_script('wc_price_slider');
+        wp_dequeue_script('wc-single-product');
+        wp_dequeue_script('wc-add-to-cart');
+        wp_dequeue_script('wc-cart-fragments');
+        wp_dequeue_script('wc-credit-card-form');
+        wp_dequeue_script('wc-checkout');
+        wp_dequeue_script('wc-add-to-cart-variation');
+        wp_dequeue_script('wc-single-product');
+        wp_dequeue_script('wc-cart');
+        wp_dequeue_script('wc-chosen');
+        wp_dequeue_script('woocommerce');
+        wp_dequeue_script('prettyPhoto');
+        wp_dequeue_script('prettyPhoto-init');
+        wp_dequeue_script('jquery-blockui');
+        wp_dequeue_script('jquery-placeholder');
+        wp_dequeue_script('jquery-payment');
+    }
+}
+add_action('wp_enqueue_scripts', 'sp_woocommerce_script_cleaner', 99);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
