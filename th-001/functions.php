@@ -145,12 +145,32 @@ add_action( 'widgets_init', 'th_001_widgets_init' );
  */
 function th_001_scripts() {
 	wp_enqueue_style( 'th-001-style', get_stylesheet_uri(), array(), _S_VERSION );
+  //  wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+  //  wp_enqueue_style('d5985eb31e51d23e8a5c', get_template_directory_uri() . '/css/styles.d5985eb31e51d23e8a5c.css');
+  
+    wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
+    wp_enqueue_style('fancybox', get_template_directory_uri() . '/css/fancybox.css');
+  
+  
+  //  wp_enqueue_style( 'twd-googlefonts', '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' );
+  
 	wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
   
     if ( is_rtl() ) {
       wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
     }
   
+  
+    wp_enqueue_script('jquery');
+  
+  
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js');
+    wp_enqueue_script( 'jquery' );
+  
+  
+    wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/fancybox.js', array('jquery'), null, true);
+  	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), null, true);
 
 	wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -192,17 +212,32 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
+// ADD NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW
+
+
+
 
 
 wp_enqueue_script('jquery');
 
 
 
-
-// OFF NEW REDACTOR
+// DLOCK EDITOR STANDART 
 
 add_filter('use_block_editor_for_post', '__return_false');
 add_filter('use_block_editor_for_page', '__return_false'); 
+
+
+// ADD IMAGES
+
+add_image_size( 'demo', 285, 350, true  );
+
+
+
+
+
+
+
 
 
 
@@ -303,107 +338,13 @@ register_nav_menus(
 
 
 
-/**
- * Advanced Custom Fields Options function
- * Always fetch an Options field value from the default language
- */
-
-//function cl_acf_set_language() {
-//return acf_get_setting('default_language');
-//}
-//
-//
-//function get_global_option($name)
-//{
-//	add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-//	$option = get_field($name, 'option');
-//	remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-//	return $option;
-//}
 
 
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
 
 
-// code LINKS
-function code_config($atts)
-{
-	switch ($atts['var']) {
-// address
-		case "time_work":
-		    add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			return get_field('time_work', 'options');
-			remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			break;
-// address
-		case "address":
-		    add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			return get_field('code_address', 'options');
-			remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			break;
-// email
-		case "email":
-		add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			return get_field('code_email', 'options');
-			remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			break;
-		case "email_link":
-// email_link
-			add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			$registration_page = get_field('registration_page', 'options');
-			if (!empty($atts['title'])) {
-				$email_tittle = __($atts['title'], 'code');
-				return '<a class="email" href="mailto:' . get_field('code_email', 'options') . '">' . $email_tittle . '</a>';
-			} else {
-				return '<a class="email" href="mailto:' . get_field('code_email', 'options') . '">' . get_field('code_email', 'options') . '</a>';
-			}
-			remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			break;
-
-// tel
-		case "tel":
-		add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			$code_phone = get_field('code_phone', 'options');
-			$title_phone = get_field('title_phone', 'options');
-			if (!empty($atts['title'])) {
-				$phone_tittle = __($atts['title'], 'code');
-				return '<a class="tel" href="tel:' . get_field('code_phone', 'options') . '">' . $phone_tittle . '</a>';
-			} else {
-				return '<a class="tel" href="tel:' . get_field('code_phone', 'options') . '">' . $title_phone . '</a>';
-			}
-			remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-			break;
-
-	}
-}
-  add_shortcode('code', 'code_config');
-// END code LINKS
-
-// DO_SHORTCODE
-add_filter('wpcf7_form_elements', 'do_shortcode');
-add_filter('acf/format_value/type=wysiwyg', 'do_shortcode');
-add_filter('acf/format_value/type=textarea', 'do_shortcode');
-add_filter('acf/format_value/type=text', 'do_shortcode');
-add_filter('acf/format_value/type=email', 'do_shortcode');
-add_filter('acf/format_value/type=url', 'do_shortcode');
-add_filter('acf/format_value/type=number', 'do_shortcode');
-add_filter('acf/format_value/type=image', 'do_shortcode');
-add_filter('acf/format_value/type=link', 'do_shortcode');
-// END DO_SHORTCODE
 
 
-// Readmore
-function readmore_shortcode($attr, $content = null){
-	return '<div class="readmore--content article' . $attr['class'] . '">'.do_shortcode($content).'</div>
-    <a class="readmore--btn">' . __('Read More', 'code'). '</a>
-    <a class="readmore--btn none">' . __('Read Less', 'code') . '</a>';
-}
-add_shortcode('readmore', 'readmore_shortcode');
-// END Readmore
+
 
 
 
@@ -436,3 +377,455 @@ add_shortcode('readmore', 'readmore_shortcode');
 //    remove_post_type_support( 'post', 'editor' );
 //    remove_post_type_support( 'page', 'editor' );
 //}, 99);
+
+
+
+
+
+
+/**
+ * Advanced Custom Fields Options function
+ * Always fetch an Options field value from the default language
+ */
+
+//function cl_acf_set_language() {
+//return acf_get_setting('default_language');
+//}
+//
+//
+//function get_global_option($name)
+//{
+//	add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+//	$option = get_field($name, 'option');
+//	remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+//	return $option;
+//}
+
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+
+
+
+
+/* plz no comment */
+if (function_exists('acf_add_options_page')) {
+
+acf_add_options_page( array(
+		'page_title'    => __('Theme settings'),
+		'menu_title'    => __('Theme settings'),
+		'menu_slug'     => 'general-settings',
+		'capability'    => 'edit_posts',
+		'redirect'      => false
+	));
+
+  }
+
+
+/**
+ * Advanced Custom Fields Options function
+ * Always fetch an Options field value from the default language
+ */
+
+//function cl_acf_set_language() {
+//return acf_get_setting('default_language');
+//}
+//
+//
+//function get_global_option($name)
+//{
+//	add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+//	$option = get_field($name, 'option');
+//	remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+//	return $option;
+//}
+
+
+
+//function cc_mime_types($mimes) {
+//  $mimes['svg'] = 'image/svg+xml';
+//  return $mimes;
+//}
+//add_filter('upload_mimes', 'cc_mime_types');
+
+
+// code LINKS
+function code_config($atts)
+{
+	switch ($atts['var']) {
+// Site URL
+		case "url_site":
+		   //add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			echo get_site_url();
+			//remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+// address
+		case "time_work":
+		   //add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			return get_field('time_work', 'options');
+			//remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+// address
+		case "address":
+		   // add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+            
+            $address_phone = get_field('code_address', 'options'); 
+ 
+            if( $address_phone ): 
+                  $address_phone_url = $address_phone['url'];
+                  $address_phone_title = $address_phone['title'];
+                  $address_phone_target = $address_phone['target'] ? $address_phone['target'] : '_self'; 
+
+               return ' <a href="' .  esc_url( $address_phone_url ) . '"   target="' . esc_attr( $address_phone_target ) . '">' .   esc_html( $address_phone_title ) . '</a>';
+            endif; 
+			//remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+// email
+		case "email":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			return get_field('code_email', 'options');
+			///remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+		case "email_link":
+// email_link
+			//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			$registration_page = get_field('registration_page', 'options');
+			if (!empty($atts['title'])) {
+				$email_tittle = __($atts['title'], 'code');
+				return '<a class="email" href="mailto:' . get_field('code_email', 'options') . '">' . $email_tittle . '</a>';
+			} else {
+				return '<a class="email" href="mailto:' . get_field('code_email', 'options') . '">' . get_field('code_email', 'options') . '</a>';
+			}
+			//remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+
+// tel
+		case "tel":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+            
+            
+            
+			$code_phone = get_field('code_phone', 'options');
+			$title_phone = get_field('title_phone', 'options');
+			if (!empty($atts['title'])) {
+				$phone_tittle = __($atts['title'], 'code');
+				return '<a class="tel" href="tel:' . get_field('code_phone', 'options') . '">' . $phone_tittle . '</a>';
+			} else {
+				return '<a class="tel" href="tel:' . get_field('code_phone', 'options') . '">' . $title_phone . '</a>';
+			}
+			//remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+// Phone set
+		case "phone_link":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+
+            $set_phone = get_field('set_phone', 'options'); 
+ 
+            if( $set_phone ): 
+                  $set_phone_url = $set_phone['url'];
+                  $set_phone_title = $set_phone['title'];
+                  $set_phone_target = $set_phone['target'] ? $set_phone_link['target'] : '_self'; 
+
+               return ' <a href="' .  esc_url( $set_phone_url ) . '">' .   esc_html( $set_phone_title ) . '</a>';
+            endif; 
+           
+			// remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+
+	}
+}
+  add_shortcode('code', 'code_config');
+// END code LINKS
+
+// DO_SHORTCODE
+add_filter('wpcf7_form_elements', 'do_shortcode');
+add_filter('acf/format_value/type=wysiwyg', 'do_shortcode');
+add_filter('acf/format_value/type=textarea', 'do_shortcode');
+add_filter('acf/format_value/type=text', 'do_shortcode');
+add_filter('acf/format_value/type=email', 'do_shortcode');
+add_filter('acf/format_value/type=url', 'do_shortcode');
+add_filter('acf/format_value/type=number', 'do_shortcode');
+add_filter('acf/format_value/type=image', 'do_shortcode');
+//add_filter('acf/format_value/type=link', 'do_shortcode');
+// END DO_SHORTCODE
+
+
+// Readmore
+function readmore_shortcode($attr, $content = null){
+	return '<div class="readmore--content article' . $attr['class'] . '">'.do_shortcode($content).'</div>
+    <a class="readmore--btn">' . __('Read More', 'code'). '</a>
+    <a class="readmore--btn none">' . __('Read Less', 'code') . '</a>';
+}
+add_shortcode('readmore', 'readmore_shortcode');
+// END Readmore
+
+
+
+//NEW register_post_type
+
+
+//function news()
+//{
+//	register_post_type('news', array(
+//		'labels' => array(
+//			'name'				=> __('News', 'news-admin'),
+//			'singular_name'   	=> __('News', 'news-admin'),
+//			'add_new'		 	=> __('Add post news', 'news-admin'),
+//			'add_new_item'		=> __('Add post news', 'news-admin'),
+//			'edit'				=> __('Edit post news', 'news-admin'),
+//			'edit_item'	   		=> __('Edit post news', 'news-admin'),
+//			'new_item'			=> __('New post news', 'news-admin'),
+//			'all_items'	   		=> __('All post news', 'news-admin'),
+//			'view'				=> __('View post news', 'news-admin'),
+//			'view_item'	   		=> __('View post news', 'news-admin'),
+//			'search_items'		=> __('Search post news', 'news-admin'),
+//			'not_found'	   		=> __('News not found', 'news-admin'),
+//		),
+//		'public' => true, // show in admin panel?
+//		'menu_position' => 24,
+//		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
+//		'taxonomies' => array('category_news'),
+//		'has_archive' => false,
+//		'capability_type' => 'post',
+//		'menu_icon'   => 'dashicons-admin-page',
+//		'rewrite' => array('slug' => 'news'),
+//	));
+//}
+//add_action('init', 'news');
+
+
+
+
+
+
+
+
+
+
+
+
+// dimox_breadcrumbs()
+
+function dimox_breadcrumbs() {
+
+	/* === ОПЦИИ === */
+	$text['home']     = 'Home'; // текст ссылки "Главная"
+	$text['category'] = '%s'; // текст для страницы рубрики
+	$text['search']   = 'Search results for the query "%s"'; // текст для страницы с результатами поиска
+	$text['tag']      = 'Posts tagged "%s"'; // текст для страницы тега
+	$text['author']   = 'Author\'s articles %s'; // текст для страницы автора
+	$text['404']      = 'Error 404'; // текст для страницы 404
+	$text['page']     = 'Page %s'; // текст 'Страница N'
+	$text['cpage']    = 'Comments page %s'; // текст 'Страница комментариев N'
+
+	$wrap_before    = '<div class="tt-breadcrumb"><div class="breadcrumbs container" itemscope itemtype="http://schema.org/BreadcrumbList"><ul>'; // открывающий тег обертки
+	$wrap_after     = '</ul></div></div><!-- .breadcrumbs -->'; // закрывающий тег обертки
+//	$sep            = '<li class="breadcrumbs__separator ion-ios-arrow-forward"></li>'; // разделитель между "крошками"
+	$before         = '<li class="breadcrumbs__current">'; // тег перед текущей "крошкой"
+	$after          = '</li>'; // тег после текущей "крошки"
+
+	$show_on_home   = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
+	$show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
+	$show_current   = 1; // 1 - показывать название текущей страницы, 0 - не показывать
+	$show_last_sep  = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
+	/* === КОНЕЦ ОПЦИЙ === */
+
+	global $post;
+	$home_url       = home_url('/');
+	$link           = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+	$link          .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
+	$link          .= '<meta itemprop="position" content="%3$s" />';
+	$link          .= '</li>';
+	$parent_id      = ( $post ) ? $post->post_parent : '';
+	$home_link      = sprintf( $link, $home_url, $text['home'], 1 );
+
+	if ( is_home() || is_front_page() ) {
+
+		if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
+
+	} else {
+
+		$position = 0;
+
+		echo $wrap_before;
+
+		if ( $show_home_link ) {
+			$position += 1;
+			echo $home_link;
+		}
+
+		if ( is_category() ) {
+			$parents = get_ancestors( get_query_var('cat'), 'category' );
+			foreach ( array_reverse( $parents ) as $cat ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+			}
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				$cat = get_query_var('cat');
+				echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_current ) {
+					if ( $position >= 1 ) echo $sep;
+					echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
+				} elseif ( $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_search() ) {
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				if ( $show_home_link ) echo $sep;
+				echo sprintf( $link, $home_url . '?s=' . get_search_query(), sprintf( $text['search'], get_search_query() ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_current ) {
+					if ( $position >= 1 ) echo $sep;
+					echo $before . sprintf( $text['search'], get_search_query() ) . $after;
+				} elseif ( $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_year() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . get_the_time('Y') . $after;
+			elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+		} elseif ( is_month() ) {
+			if ( $show_home_link ) echo $sep;
+			$position += 1;
+			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
+			if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_day() ) {
+			if ( $show_home_link ) echo $sep;
+			$position += 1;
+			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
+			$position += 1;
+			echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
+			if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_single() && ! is_attachment() ) {
+			if ( get_post_type() != 'post' ) {
+				$position += 1;
+				$post_type = get_post_type_object( get_post_type() );
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
+				if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+				elseif ( $show_last_sep ) echo $sep;
+			} else {
+				$cat = get_the_category(); $catID = $cat[0]->cat_ID;
+				$parents = get_ancestors( $catID, 'category' );
+				$parents = array_reverse( $parents );
+				$parents[] = $catID;
+				foreach ( $parents as $cat ) {
+					$position += 1;
+					if ( $position > 1 ) echo $sep;
+					echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+				}
+				if ( get_query_var( 'cpage' ) ) {
+					$position += 1;
+					echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
+					echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
+				} else {
+					if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+					elseif ( $show_last_sep ) echo $sep;
+				}
+			}
+
+		} elseif ( is_post_type_archive() ) {
+			$post_type = get_post_type_object( get_post_type() );
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . $post_type->label . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_attachment() ) {
+			$parent = get_post( $parent_id );
+			$cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
+			$parents = get_ancestors( $catID, 'category' );
+			$parents = array_reverse( $parents );
+			$parents[] = $catID;
+			foreach ( $parents as $cat ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+			}
+			$position += 1;
+			echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
+			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_page() && ! $parent_id ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . get_the_title() . $after;
+			elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+		} elseif ( is_page() && $parent_id ) {
+			$parents = get_post_ancestors( get_the_ID() );
+			foreach ( array_reverse( $parents ) as $pageID ) {
+				$position += 1;
+				if ( $position > 1 ) echo $sep;
+				echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
+			}
+			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( is_tag() ) {
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				$tagID = get_query_var( 'tag_id' );
+				echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_author() ) {
+			$author = get_userdata( get_query_var( 'author' ) );
+			if ( get_query_var( 'paged' ) ) {
+				$position += 1;
+				echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
+				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+			} else {
+				if ( $show_home_link && $show_current ) echo $sep;
+				if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
+				elseif ( $show_home_link && $show_last_sep ) echo $sep;
+			}
+
+		} elseif ( is_404() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			if ( $show_current ) echo $before . $text['404'] . $after;
+			elseif ( $show_last_sep ) echo $sep;
+
+		} elseif ( has_post_format() && ! is_singular() ) {
+			if ( $show_home_link && $show_current ) echo $sep;
+			echo get_post_format_string( get_post_format() );
+		}
+
+		echo $wrap_after;
+
+	}
+} // end of dimox_breadcrumbs()
+
+
+
+
+
+
+
+
