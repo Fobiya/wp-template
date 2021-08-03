@@ -12,54 +12,88 @@
 ?>
           
       
- <section _ngcontent-hmn-c6="" class="footer-area footer-area-two pt-100 pb-70">
+ <section _ngcontent-hmn-c6="" class="footer-area footer-area-two pt-100 ">
    <div _ngcontent-hmn-c6="" class="container">
       <div _ngcontent-hmn-c6="" class="row">
          <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
             <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <a _ngcontent-hmn-c6="" routerlink="/" href="/"><img _ngcontent-hmn-c6="" src="assets/img/logo.png" alt="Image"></a>
-               <p _ngcontent-hmn-c6="">Our priority is to ensure the well being of patients. Our service and the work efficiency of our staff are the reason for our success to ensure the well being.</p>
-               <p _ngcontent-hmn-c6="" class="address"><span _ngcontent-hmn-c6="">Address:-</span> 6890 Blvd, The Bronx, NY 1058 New York, USA</p>
+             
+              <?php $logo = get_field('logo','option'); ?>
+              <?php if( !empty( $logo ) ): ?>
+                    <a _ngcontent-lyj-c5="" routerlink="/" href="/"><img src="<?php echo esc_url($logo['url']); ?>"  alt="<?php echo esc_attr($logo['alt']); ?>"></a>
+              <?php endif; ?>   
+
+                              <p _ngcontent-hmn-c6=""><?= get_field('title_info','option'); ?></p>
+               
+
             </div>
          </div>
          <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
             <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Our departments</h3>
-               <ul _ngcontent-hmn-c6="">
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Pediatric clinic</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Oral medicine</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Neurology</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Disability</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Cardiology</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Pediatrician</a></li>
+               <h3 _ngcontent-hmn-c6="">Наши Услуги</h3>
+               
+                  <ul _ngcontent-hmn-c6="">         
+                    <?php  
+                     $args = array(
+                          'order' => 'DESC', // order filter  last post
+                          'post_type'  => 'services', // Post type category BLOG
+                          'posts_per_page' => 7, // echo show three post 
+                      );
+                      // The Query
+                      $the_query = new WP_Query( $args );
+
+                      // The Loop
+                      if ( $the_query->have_posts() ) {
+
+                          while ( $the_query->have_posts() ) {
+                              $the_query->the_post(); ?>
+                            <li _ngcontent-tft-c43=""><a _ngcontent-tft-c43="" routerlink="/services-details" href="<?= get_the_permalink(); ?>"><?= get_the_title(); ?></a></li>
+                        <?  }
+
+                      } else {
+                          // no posts found
+                      }
+                      /* Restore original Post Data */
+                      wp_reset_postdata();
+                    ?>
                </ul>
             </div>
          </div>
          <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
             <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Popular links</h3>
+               <h3 _ngcontent-hmn-c6="">Другое</h3>
+               
+                  <?php
+                    $fooargsm = array(
+                       'menu' => 'footer-right',
+              //        'container' => 'nav',
+              //        'container_class' => 'menu',
+              //        'before' => '<h2>', 
+              //        'after'  => '</h2>',
+                    );
+                  ?>
+               
                <ul _ngcontent-hmn-c6="">
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">About us</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Emergency department</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Contact us</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Terms and conditions</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Privacy policy</a></li>
-                  <li _ngcontent-hmn-c6=""><a _ngcontent-hmn-c6="" routerlink="/" href="/">Find a doctor</a></li>
+                  <?php  wp_nav_menu( $fooargsm );?>
                </ul>
             </div>
          </div>
          <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
             <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Contact us</h3>
-               <p _ngcontent-hmn-c6="">For 24/7 emergency please call us. If there is no emergency, contact at time.</p>
-               <ul _ngcontent-hmn-c6="">
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6="">Call:-</span><a _ngcontent-hmn-c6="" href="tel:+15143125678">+1 (514) 312-5678</a></li>
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6="">Email:-</span><a _ngcontent-hmn-c6="" href="mailto:support@vuci.com">support@vuci.com</a></li>
+               <h3 _ngcontent-hmn-c6="">Контакты</h3>
+
+               <ul _ngcontent-hmn-c6="" class="contact">
+                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i></span> <?= do_shortcode( '[code var=phone_link]' ); ?></li>
+                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i></span> <?= do_shortcode( '[code var=next_phone_link]' ); ?></li>
+                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i></span> <?= do_shortcode( '[code var=email_link]' ); ?></li>
+                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i></span> <?= do_shortcode( '[code var=address]' ); ?></li>
                </ul>
+               <?php if(0){ ?>
                <ul _ngcontent-hmn-c6="" class="open-day">
-                  <li _ngcontent-hmn-c6=""> Weekdays <span _ngcontent-hmn-c6="">8:00 am - 6:00 pm</span></li>
-                  <li _ngcontent-hmn-c6=""> Sunday <span _ngcontent-hmn-c6="">9:00 am - 3:00 pm</span></li>
+                  <li _ngcontent-hmn-c6=""> <?= get_field('time_work','option'); ?></li>
+                  <li _ngcontent-hmn-c6=""> <?= get_field('consultations','option'); ?></li>
                </ul>
+                 <?php } ?>
             </div>
          </div>
       </div>
@@ -69,20 +103,20 @@
 <div _ngcontent-hmn-c6="" class="copy-right-area copy-right-area-two">
    <div _ngcontent-hmn-c6="" class="container">
       <p _ngcontent-hmn-c6="">
-      
-      
-      
-      Copyright @2020 <strong _ngcontent-hmn-c6="">Vuci</strong>. Designed <a _ngcontent-hmn-c6="" href="https://envytheme.com/" target="_blank">EnvyTheme</a>
-      
-      
+
+        Copyright  &middot;  All Rights Are Reserved &copy; <?php echo date('Y'); ?> <a href="<?php echo get_site_url(); ?>"><?php echo get_bloginfo( 'name' ); ?></a>
+
       </p>
    </div>
 </div>   
+   
+   
+   <div _ngcontent-qkf-c6="" class="go-top active"><i _ngcontent-qkf-c6="" class="bx bx-chevrons-up"></i><i _ngcontent-qkf-c6="" class="bx bx-chevrons-up"></i></div>
     
     
      <?php if(0){ ?>         
 
-					<ul class='social-networks tt-social-icon'>
+		<ul class='social-networks tt-social-icon'>
 
 							<?php while (have_rows('fotter_social_network', 'option')) : the_row();  ?>
 
@@ -153,7 +187,8 @@
 							<?php endwhile; ?>
 
 						</ul>
-<?php } ?>
+						
+     <?php } ?>
 
 <!-- #wp_footer -->
 <?php if(0){ ?>
@@ -173,6 +208,41 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 <?php } ?>
+<?php if(0){ ?>
+<a class="bot_modal none" data-fancybox="" data-src="#modal__open" href="javascript:;">Open Modal</a>
+<?php } ?>
+    <!-- //// MODAL ////-->
+    <div id="modal__open" style="display: none;">
+
+           <form _ngcontent-rva-c29="" class="form__modal">
+
+
+                    <h3 _ngcontent-rva-c29="">Заказать консультацию</h3>
+
+
+                    <div _ngcontent-rva-c29="" class="form-group">
+                       <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Имя*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
+
+                    </div>
+
+
+
+                    <div _ngcontent-rva-c29="" class="form-group">
+                       <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Номер телефона*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
+
+                    </div>
+
+                 <button _ngcontent-rva-c29="" type="submit" class="default-btn"> ОТПРАВТЬ</button>
+
+           </form>
+
+    </div>
+    
+    <div id="modal__thx" style="display: none;">
+
+      <h3 _ngcontent-rva-c29="">Текст для модала:Ваша заявка отправлена. Специалист свяжется с Вами в ближайшее время!</h3>
+
+    </div>
 
 <script>
   

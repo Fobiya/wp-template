@@ -69,6 +69,10 @@ get_header(); ?>
                   
                   
                </div>
+                   <div _ngcontent-kpp-c20="" class="availability  name__title">
+                    <h2 _ngcontent-kpp-c20=""><?= get_the_title(); ?></h2>
+                    
+              </div>
                <div _ngcontent-kpp-c20="" class="availability">
                 <?php // check if the flexible content field has rows of data
                   if( have_rows('doctors') ):
@@ -102,113 +106,34 @@ get_header(); ?>
 
                   
                </div>
-               <div _ngcontent-kpp-c20="" class="appointment-box">
-                  <p _ngcontent-kpp-c20="">Book an appointment</p>
-                  <div _ngcontent-kpp-c20="" class="appointment-form">
-                     <form _ngcontent-kpp-c20="">
-                        <div _ngcontent-kpp-c20="" class="form-group"><input _ngcontent-kpp-c20="" type="text" placeholder="Your Name" class="form-control"></div>
-                        <div _ngcontent-kpp-c20="" class="form-group">
-                           <select _ngcontent-kpp-c20="" style="display: none;">
-                              <option _ngcontent-kpp-c20="" value="">Select Department</option>
-                              <option _ngcontent-kpp-c20="" value="">Cardiology</option>
-                              <option _ngcontent-kpp-c20="" value="">Neurology</option>
-                              <option _ngcontent-kpp-c20="" value="">Cancer Care</option>
-                              <option _ngcontent-kpp-c20="" value="">Laboratory</option>
-                              <option _ngcontent-kpp-c20="" value="">Dental</option>
-                              <option _ngcontent-kpp-c20="" value="">Neurology</option>
-                           </select>
-                           <div class="nice-select" tabindex="0">
-                              <span class="current">Select Department</span>
-                              <ul class="list">
-                                 <li data-value="" class="option selected">Select Department</li>
-                                 <li data-value="" class="option">Cardiology</li>
-                                 <li data-value="" class="option">Neurology</li>
-                                 <li data-value="" class="option">Cancer Care</li>
-                                 <li data-value="" class="option">Laboratory</li>
-                                 <li data-value="" class="option">Dental</li>
-                                 <li data-value="" class="option">Neurology</li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div _ngcontent-kpp-c20="" class="form-group">
-                           <select _ngcontent-kpp-c20="" style="display: none;">
-                              <option _ngcontent-kpp-c20="" value="">Select A Service</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style One</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style Two</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style Three</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style Four</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style Five</option>
-                              <option _ngcontent-kpp-c20="" value="">Services Style Six</option>
-                           </select>
-                           <div class="nice-select" tabindex="0">
-                              <span class="current">Select A Service</span>
-                              <ul class="list">
-                                 <li data-value="" class="option selected">Select A Service</li>
-                                 <li data-value="" class="option">Services Style One</li>
-                                 <li data-value="" class="option">Services Style Two</li>
-                                 <li data-value="" class="option">Services Style Three</li>
-                                 <li data-value="" class="option">Services Style Four</li>
-                                 <li data-value="" class="option">Services Style Five</li>
-                                 <li data-value="" class="option">Services Style Six</li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div _ngcontent-kpp-c20="" class="form-group">
-                           <select _ngcontent-kpp-c20="" style="display: none;">
-                              <option _ngcontent-kpp-c20="" value="">Select A Location</option>
-                              <option _ngcontent-kpp-c20="" value="">London</option>
-                              <option _ngcontent-kpp-c20="" value="">United Kingdom</option>
-                              <option _ngcontent-kpp-c20="" value="">United States</option>
-                              <option _ngcontent-kpp-c20="" value="">Canada</option>
-                              <option _ngcontent-kpp-c20="" value="">Australia</option>
-                              <option _ngcontent-kpp-c20="" value="">California </option>
-                           </select>
-                           <div class="nice-select" tabindex="0">
-                              <span class="current">Select A Location</span>
-                              <ul class="list">
-                                 <li data-value="" class="option selected">Select A Location</li>
-                                 <li data-value="" class="option">London</li>
-                                 <li data-value="" class="option">United Kingdom</li>
-                                 <li data-value="" class="option">United States</li>
-                                 <li data-value="" class="option">Canada</li>
-                                 <li data-value="" class="option">Australia</li>
-                                 <li data-value="" class="option">California </li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div _ngcontent-kpp-c20="" class="form-group">
-                           <select _ngcontent-kpp-c20="" style="display: none;">
-                              <option _ngcontent-kpp-c20="" value="">Select A Preferred Time</option>
-                              <option _ngcontent-kpp-c20="" value="">8.00 AM To 9.00 AM</option>
-                              <option _ngcontent-kpp-c20="" value="">9.00 AM To 10.00 AM</option>
-                              <option _ngcontent-kpp-c20="" value="">11.00 AM To 12.00 AM</option>
-                              <option _ngcontent-kpp-c20="" value="">12.00 AM To 1.00 PM</option>
-                              <option _ngcontent-kpp-c20="" value="">1.00 PM To 2.00 PM</option>
-                              <option _ngcontent-kpp-c20="" value="">2.00 PM To 3.00 pm</option>
-                              <option _ngcontent-kpp-c20="" value="">3.00 PM To 4.00 PM</option>
-                           </select>
-                           <div class="nice-select" tabindex="0">
-                              <span class="current">Select A Preferred Time</span>
-                              <ul class="list">
-                                 <li data-value="" class="option selected">Select A Preferred Time</li>
-                                 <li data-value="" class="option">8.00 AM To 9.00 AM</li>
-                                 <li data-value="" class="option">9.00 AM To 10.00 AM</li>
-                                 <li data-value="" class="option">11.00 AM To 12.00 AM</li>
-                                 <li data-value="" class="option">12.00 AM To 1.00 PM</li>
-                                 <li data-value="" class="option">1.00 PM To 2.00 PM</li>
-                                 <li data-value="" class="option">2.00 PM To 3.00 pm</li>
-                                 <li data-value="" class="option">3.00 PM To 4.00 PM</li>
-                              </ul>
-                           </div>
-                        </div>
-                        <div _ngcontent-kpp-c20="" class="form-group">
-                           <div _ngcontent-kpp-c20="" id="datetimepicker" class="input-group date"><input _ngcontent-kpp-c20="" type="text" placeholder="07/09/2020" class="form-control"><span _ngcontent-kpp-c20="" class="input-group-addon"></span><i _ngcontent-kpp-c20="" class="bx bx-calendar"></i></div>
-                        </div>
-                        <button _ngcontent-kpp-c20="" type="submit" class="default-btn">Book appointment</button>
+ 
+             </div>
+            <div _ngcontent-tft-c43="" class="sidebar-widget-form categories">
+               
+                  <div _ngcontent-rva-c29="" class="appointment-here-form">
+                     <form _ngcontent-rva-c29="">
+
+
+                              <h3 _ngcontent-rva-c29="">Заказать консультацию</h3>
+
+
+                              <div _ngcontent-rva-c29="" class="form-group">
+                                 <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Имя*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
+
+                              </div>
+
+
+
+                              <div _ngcontent-rva-c29="" class="form-group">
+                                 <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Номер телефона*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
+
+                              </div>
+
+                           <button _ngcontent-rva-c29="" type="submit" class="default-btn"> ОТПРАВТЬ</button>
+
                      </form>
                   </div>
-               </div>
-            </div>
+              </div> 
          </div>
          <div _ngcontent-kpp-c20="" class="col-lg-8 col-md-12">
             <div _ngcontent-kpp-c20="" class="doctors-details mb-30">

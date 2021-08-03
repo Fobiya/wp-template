@@ -105,21 +105,116 @@
       <div _ngcontent-lyj-c5="" class="container">
          <div _ngcontent-lyj-c5="" class="row align-items-center">
             <div _ngcontent-lyj-c5="" class="col-lg-3 col-sm-4">
-               <ul _ngcontent-lyj-c5="" class="header-left-content">
-                  <li _ngcontent-lyj-c5=""><a _ngcontent-lyj-c5="" href="#" target="_blank"><i _ngcontent-lyj-c5="" class="bx bxl-facebook"></i></a></li>
-                  <li _ngcontent-lyj-c5=""><a _ngcontent-lyj-c5="" href="#" target="_blank"><i _ngcontent-lyj-c5="" class="bx bxl-pinterest-alt"></i></a></li>
-                  <li _ngcontent-lyj-c5=""><a _ngcontent-lyj-c5="" href="#" target="_blank"><i _ngcontent-lyj-c5="" class="bx bxl-twitter"></i></a></li>
-               </ul>
+              
+              
+				  <ul _ngcontent-lyj-c5="" class="header-left-content">
+              
+              
+                        
+    
+
+							<?php while (have_rows('fotter_social_network', 'option')) : the_row();  ?>
+
+								<?php if (get_row_layout() == 'facebook_1') : ?>
+									<li>
+										<a target="_blank" class="facebook-footer icon-g-64" href="<?php the_sub_field('facebook'); ?>">
+											<i class='bx bxl-facebook'></i>
+										</a>
+									</li>
+								<?php endif; ?>
+								
+								
+								<?php if (get_row_layout() == 'instagram_1') : ?>
+									<li>
+										<a target="_blank" class="instagram icon-g-67" href="<?php the_sub_field('instagram'); ?>">
+											<i class='bx bxl-instagram'></i>
+										</a>
+									</li>
+								<?php endif; ?>
+
+								<?php if (get_row_layout() == 'youtube_1') : ?>
+									<li _ngcontent-lyj-c5="">
+										<a target="_blank" class="youtube" href="<?php the_sub_field('youtube'); ?>">
+												<i class='bx bxl-youtube'></i>
+										</a>
+									</li>
+								<?php endif; ?>
+								
+								<?php if (get_row_layout() == 'viber_1') : ?>
+									<li _ngcontent-lyj-c5="">
+										<a target="_blank" class="viber" href="<?php the_sub_field('viber'); ?>">
+											<img src="<?= get_template_directory_uri(); ?>/img/icon2.png" alt="">
+										</a>
+									</li>
+								<?php endif; ?>
+								
+								<?php if (get_row_layout() == 'whatsapp_1') : ?>
+									<li _ngcontent-lyj-c5="">
+										<a target="_blank" class="whatsapp" href="<?php the_sub_field('whatsapp'); ?>">
+											<img src="<?= get_template_directory_uri(); ?>/img/icon3.png" alt="">
+										</a>
+									</li>
+								<?php endif; ?>
+								
+								
+								<?php if (get_row_layout() == 'telegram_1') : ?>
+									<li _ngcontent-lyj-c5="">
+										<a target="_blank" class="telegram" href="<?php the_sub_field('telegram'); ?>">
+											<img src="<?= get_template_directory_uri(); ?>/img/icon4.png" alt="">
+										</a>
+									</li>
+								<?php endif; ?>
+								
+
+								<?php if (get_row_layout() == 'twitter_11') : ?>
+									<li>
+										<a target="_blank" class="twitter icon-h-58" href="<?php the_sub_field('twitter'); ?>">
+											<i class='ion-social-twitter'></i>
+										</a>
+									</li>
+								<?php endif; ?>
+
+								<?php if (get_row_layout() == 'google_11') : ?>
+									<li>
+										<a target="_blank" class="google icon-g-66" href="<?php the_sub_field('google'); ?>"></a>
+									</li>
+								<?php endif; ?>
+						
+
+
+								<?php if (get_row_layout() == 'linkedin_11') : ?>
+									<li>
+										<a target="_blank" class="linkedin" href="<?php the_sub_field('linkedin'); ?>">
+											<i class='ion-social-linkedin'></i>
+										</a>
+									</li>
+								<?php endif; ?>
+
+								<?php if (get_row_layout() == 'skype_11') : ?>
+									<li>
+										<a target="_blank" class="skype" href="<?php the_sub_field('skype'); ?>"></a>
+									</li>
+								<?php endif; ?>
+
+								<?php if (get_row_layout() == 'vkontakte_11') : ?>
+									<li>
+										<a target="_blank" class="vkontakte" href="<?php the_sub_field('vkontakte'); ?>"></a>
+									</li>
+								<?php endif; ?>
+
+							<?php endwhile; ?>
+
+						</ul>
+			
             </div>
             <div _ngcontent-lyj-c5="" class="col-lg-9 col-sm-8">
                <ul _ngcontent-lyj-c5="" class="header-right-content">
-                 
-                 
-                 
-
-
-                  <li _ngcontent-lyj-c5=""><i _ngcontent-lyj-c5="" class="flaticon-clock"></i> Бесплатная консультация <span _ngcontent-lyj-c5="">24/7. Звоните!</span></li>
-                  <li _ngcontent-lyj-c5=""><i _ngcontent-lyj-c5="" class="flaticon-call"></i> Call Now <a _ngcontent-lyj-c5="" href="tel:+15143125678">+380 (066) 276-84-64</a><a _ngcontent-lyj-c5="" href="tel:+15143125678">+380 (096) 710-81-51</a></li>
+                  <li _ngcontent-lyj-c5=""><i _ngcontent-lyj-c5="" class="flaticon-clock"></i><span _ngcontent-lyj-c5="">24/7. Звоните!</span></li>
+                  <li _ngcontent-lyj-c5="">
+                    <i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i>
+                      <?= do_shortcode( '[code var=phone_link]' ); ?>
+                      <?= do_shortcode( '[code var=next_phone_link]' ); ?>
+                  </li>
                </ul>
             </div>
          </div>
@@ -127,18 +222,46 @@
    </div>
      <div _ngcontent-lyj-c5="" class="navbar-area">
       <div _ngcontent-lyj-c5="" class="mobile-nav">
-         <div _ngcontent-lyj-c5="" class="container"><a _ngcontent-lyj-c5="" routerlink="/" class="logo" href="/"><img _ngcontent-lyj-c5="" src="assets/img/logo.png" alt="Logo"></a></div>
+         <div _ngcontent-lyj-c5="" class="container">
+            <?php $logo = get_field('logo','option'); ?>
+              <?php if( !empty( $logo ) ): ?>
+                  <a _ngcontent-lyj-c5="" routerlink="/" href="/"><img src="<?php echo esc_url($logo['url']); ?>"  alt="<?php echo esc_attr($logo['alt']); ?>"></a>
+              <?php endif; ?>     
+           </div>
       </div>
       
-      
+
       
       <div _ngcontent-lyj-c5="" class="main-nav">
          <div _ngcontent-lyj-c5="" class="container">
             <nav _ngcontent-lyj-c5="" class="navbar navbar-expand-md">
-               <a _ngcontent-lyj-c5="" routerlink="/" class="navbar-brand" href="/"><img _ngcontent-lyj-c5="" src="assets/img/logo.png" alt="Logo"></a>
+              
+            <?php if( !empty( $logo ) ): ?>
+                  <a _ngcontent-lyj-c5="" routerlink="/" class="navbar-brand" href="/"><img src="<?php echo esc_url($logo['url']); ?>"  alt="<?php echo esc_attr($logo['alt']); ?>"></a>
+            <?php endif; ?> 
                
-                <!-- MENU -->
-                       
+                <div _ngcontent-lyj-c5="" class="collapse navbar-collapse mean-menu" style="display: block;">
+            
+                      <?php
+                        $argsm = array(
+                           'menu' => 'main-menu',
+                          'container' => 'ul',
+//                          'container_class' => 'navbar-nav m-auto',
+//                          'before' => '<h2>', 
+//                          'after'  => '</h2>',
+                              'items_wrap'      => '<ul id="%1$s" class="%2$s navbar-nav m-auto">%3$s</ul>',
+//                                 'menu_class'      => 'menu', 
+//                            'link_before'     => '<li class="nav-item">',
+//                            'link_after'      => '</li>', 
+                          
+                        );
+                      ?>
+                      <?php  wp_nav_menu( $argsm );?>
+               
+              </div>
+
+               <?php if(0){?>
+              <!-- MENU -->
                <div _ngcontent-lyj-c5="" class="collapse navbar-collapse mean-menu" style="display: block;">
                   <ul _ngcontent-lyj-c5="" class="navbar-nav m-auto">
                      <li _ngcontent-lyj-c5="" class="nav-item">
@@ -228,15 +351,15 @@
                   </ul>
                   
                </div>
-               
-                <!-- END MENU -->
-               
+              <!-- END MENU -->
+
+               <?php } ?>
             </nav>
          </div>
       </div>
       
       
-      
+   <?php if(0){  ?>
       <div _ngcontent-lyj-c5="" class="others-option-for-responsive">
          <div _ngcontent-lyj-c5="" class="container">
             <div _ngcontent-lyj-c5="" class="dot-menu">
@@ -263,6 +386,8 @@
             </div>
          </div>
       </div>
+   <?php } ?>
+   
    </div>
   
 </header>

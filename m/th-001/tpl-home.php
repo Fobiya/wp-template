@@ -11,7 +11,7 @@ get_header(); ?>
         while ( have_rows('home_pages') ) : the_row(); ?>
         <?php if( get_row_layout() == 'section_1' ): ?>
  
-          <div class="home_pages__slider__section__1">
+           <div class="home_pages__slider__section__1">
 
    
              <?php if( have_rows('box_list') ): ?>
@@ -43,7 +43,7 @@ get_header(); ?>
                                       $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
                                      <div _ngcontent-rva-c29="" data-wow-delay="1s" class="banner-btn wow fadeInUp" style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;">
-                                        <a _ngcontent-rva-c29="" routerlink="/about" class="default-btn" rel="nofollow" target="<?php echo esc_attr( $link_target ); ?>"  href="<?php echo esc_url( $link_url ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                                        <a _ngcontent-rva-c29="" routerlink="/about" class="default-yallow" rel="nofollow" target="<?php echo esc_attr( $link_target ); ?>"  href="<?php echo esc_url( $link_url ); ?>"><?php echo esc_html( $link_title ); ?></a>
                                      </div>
                                 <?php endif; ?>
 
@@ -52,7 +52,7 @@ get_header(); ?>
                         </div>
                      </div>
                      
-          </section>
+                  </section>
 
                   </div>
 
@@ -62,39 +62,41 @@ get_header(); ?>
 
             </div>
 
-         <?php if( have_rows('section_bottom') ): ?>
+           <?php if( have_rows('section_bottom') ): ?>
 
-        <div _ngcontent-bpm-c29="" class="feature-area feature-area-two">
-           <div _ngcontent-bpm-c29="" class="container-fluid">
-              <div _ngcontent-bpm-c29="" class="row">
+              <div _ngcontent-bpm-c29="" class="feature-area feature-area-two">
+             <div _ngcontent-bpm-c29="" class="container-fluid">
+                <div _ngcontent-bpm-c29="" class="row">
 
-            <?php while( have_rows('section_bottom') ): the_row();
-                // vars
-                $image = get_sub_field('images');
-                $title = get_sub_field('title');
-                $paragraph = get_sub_field('paragraph');
-                $link = get_sub_field('link');  ?>
+              <?php while( have_rows('section_bottom') ): the_row();
+                  // vars
+                  $image = get_sub_field('images');
+                  $title = get_sub_field('title');
+                  $paragraph = get_sub_field('paragraph');
+                  $link = get_sub_field('link');  ?>
 
-                 <div _ngcontent-bpm-c29="" class="col-lg-4 col-sm-6">
-                    <div _ngcontent-bpm-c29="" class="single-feature <?php if(get_row_index() == '2'){ echo 'active'; } ?>">
-                      <?php if( !empty( $image ) ): ?>
-                          <img  _ngcontent-bpm-c29="" src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>">
-                      <?php endif; ?>
-                      <span _ngcontent-bpm-c29=""><?= $title; ?></span></div>
-                 </div>
+                   <div _ngcontent-bpm-c29="" class="col-lg-4 col-sm-6">
+                      <div _ngcontent-bpm-c29="" class="single-feature <?php if(get_row_index() == '2'){ echo 'active'; } ?>">
 
-              <?php endwhile; ?>
+                       <?php if(get_row_index() == '1'){ ?><a href="/doctors/"><i _ngcontent-lrd-c29="" class="flaticon-doctor-1"></i> <span _ngcontent-bpm-c29=""><?= $title; ?></span></a><?php } ?>
+                        <?php if(get_row_index() == '2'){ ?><a data-fancybox="" data-src="#modal__open" href="javascript:;"><img _ngcontent-lrd-c29="" src="<?= get_template_directory_uri(); ?>/img/appointment.png" alt="Image"> <span _ngcontent-bpm-c29=""><?= $title; ?></span></a><?php } ?>
+                        <?php if(get_row_index() == '3'){ ?><a href="#doctorhome"><i _ngcontent-lrd-c29="" class="flaticon-first-aid-kit"> <span _ngcontent-bpm-c29=""><?= $title; ?></span></i></a><?php } ?>
+
+                      </div>
+                   </div>
+
+                <?php endwhile; ?>
 
 
-                </div>
-             </div>
-          </div>
+                  </div>
+               </div>
+            </div>
 
-        <?php endif; ?>
+           <?php endif; ?>
 
         <?php elseif( get_row_layout() == 'section_2' ): ?>
 
-        <section _ngcontent-rva-c29="" class="choose-us-area-two ptb-100">
+          <section _ngcontent-rva-c29="" class="choose-us-area-two ptb-100">
            <div _ngcontent-rva-c29="" class="container">
               <div _ngcontent-rva-c29="" class="row align-items-center">
                  <div _ngcontent-rva-c29="" class="col-lg-6 col-md-12">
@@ -134,104 +136,137 @@ get_header(); ?>
                             $link_title = $link['title'];
                             $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
-                          <a _ngcontent-rva-c29="" class="default-btn" href="<?php echo esc_url( $link_url ); ?>"  target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                          <a _ngcontent-rva-c29="" class="default-btn default-yallow" href="<?php echo esc_url( $link_url ); ?>"  target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
 
                       <?php endif; ?>
 
                     </div>
                  </div>
+           
     
-                <?php if( have_rows('address-and-week') ): ?>
-                  <?php while( have_rows('address-and-week') ): the_row(); 
+                  <?php if( have_rows('address-and-week') ): ?>
+                    <?php while( have_rows('address-and-week') ): the_row(); 
 
-                      // Get sub field values.
-                      $image = get_sub_field('image');
-                      $link = get_sub_field('link'); ?>
+                        // Get sub field values.
+                        $image = get_sub_field('image');
+                        $link = get_sub_field('link'); ?>
 
-                       <div _ngcontent-rva-c29="" class="col-lg-6 col-md-12">
-                          <div _ngcontent-rva-c29="" class="choose-us-img-two">
-                             <img _ngcontent-rva-c29="" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
-                             <div _ngcontent-rva-c29="" class="address-and-week">
 
-                               <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                                <p + _ngcontent-rva-c29=""><?php the_sub_field('title'); ?></p>
-                               <?php endif; ?>
 
-                                <div _ngcontent-rva-c29="" class="address-week">
-                                   <ul _ngcontent-rva-c29="" class="address">
+                         <div _ngcontent-rva-c29="" class="col-lg-6 col-md-12">
+                            <div _ngcontent-rva-c29="" class="choose-us-img-two">
+                               <img _ngcontent-rva-c29="" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+                               
+                               <?php if(0){ ?>
+                                 <div _ngcontent-rva-c29="" class="address-and-week">
 
-                                  <?php $phone = get_sub_field('phone'); ?>
+                                 <?php if( get_sub_field('title')): ?><!-- if under__the -->
+                                  <p + _ngcontent-rva-c29=""><?php the_sub_field('title'); ?></p>
+                                 <?php endif; ?>
 
-                                     <?php if( $phone ): 
-                                        $phone_url = $phone['url'];
-                                        $phone_title = $phone['title'];
-                                        $phone_target = $phone['target'] ? $phone['target'] : '_self'; ?>
+                                  <div _ngcontent-rva-c29="" class="address-week">
+                                     <ul _ngcontent-rva-c29="" class="address">
 
-                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29="">Call:</span><a _ngcontent-rva-c29="" href="<?php echo esc_url( $phone_url ); ?>"><?php echo esc_html( $phone_title ); ?></a></li>
+                                    <?php $phone = get_sub_field('phone'); ?>
 
+                                       <?php if( $phone ): 
+                                          $phone_url = $phone['url'];
+                                          $phone_title = $phone['title'];
+                                          $phone_target = $phone['target'] ? $phone['target'] : '_self'; ?>
+
+                                          <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29=""></span><a _ngcontent-rva-c29="" href="<?php echo esc_url( $phone_url ); ?>"><?php echo esc_html( $phone_title ); ?></a></li>
+
+                                       <?php endif; ?>
+
+
+
+                                    <?php $Email = get_sub_field('Email'); ?>
+
+                                       <?php if( $phone ): 
+                                          $Email_url = $Email['url'];
+                                          $Email_title = $Email['title'];
+                                          $Email_target = $Email['target'] ? $Email['target'] : '_self'; ?>
+
+                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i><span _ngcontent-rva-c29=""></span><a _ngcontent-rva-c29="" href="mailto:<?php echo esc_url( $Email_url ); ?>"><?php echo esc_html( $Email_title ); ?></a></li>
                                      <?php endif; ?>
 
 
+                                    <?php $address = get_sub_field('address'); ?>
 
-                                  <?php $Email = get_sub_field('Email'); ?>
+                                   <?php if( $phone ): 
+                                      $address_url = $address['url'];
+                                      $address_title = $address['title'];
+                                      $address_target = $address['target'] ? $address['target'] : '_self'; ?>
 
-                                     <?php if( $phone ): 
-                                        $Email_url = $Email['url'];
-                                        $Email_title = $Email['title'];
-                                        $Email_target = $Email['target'] ? $Email['target'] : '_self'; ?>
+                                    <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i><span _ngcontent-rva-c29=""></span><a _ngcontent-rva-c29="" href="<?php echo esc_url( $address_url ); ?>"><?php echo esc_html( $address_title ); ?></a></li>
 
-                                      <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i><span _ngcontent-rva-c29="">Email:</span><a _ngcontent-rva-c29="" href="mailto:<?php echo esc_url( $Email_url ); ?>"><?php echo esc_html( $Email_title ); ?></a></li>
-                                   <?php endif; ?>
+                                  <?php endif; ?>
+
+                                     </ul>
+
+                                   <?php if( have_rows('week') ): ?>
+                                     <ul _ngcontent-rva-c29="" class="week">
+                                        <?php while( have_rows('week') ): the_row();
+                                            // vars
+                                            $image = get_sub_field('imgs');
+                                             $title = get_sub_field('title');
+                                             $right = get_sub_field('right');
+                                             $left = get_sub_field('left');
+                                            // $link = get_sub_field('link');  ?>
 
 
-                                  <?php $address = get_sub_field('address'); ?>
+                                              <li _ngcontent-rva-c29=""> <?= $left; ?> <span _ngcontent-rva-c29=""><?= $right; ?></span></li>
 
-                                 <?php if( $phone ): 
-                                    $address_url = $address['url'];
-                                    $address_title = $address['title'];
-                                    $address_target = $address['target'] ? $address['target'] : '_self'; ?>
+                                          <?php endwhile; ?>
+                                         </ul>
+                                      <?php endif; ?>
 
-                                  <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i><span _ngcontent-rva-c29="">Address:</span><a _ngcontent-rva-c29="" href="<?php echo esc_url( $address_url ); ?>"><?php echo esc_html( $address_title ); ?></a></li>
 
-                                <?php endif; ?>
+                                  </div>
+                               </div>
+                               <?php } ?>
+                               
+                                
+                               
+                              <div _ngcontent-rva-c29="" class="address-and-week">
 
-                                   </ul>
+                                        <p + _ngcontent-rva-c29=""><?= get_field('title_info', 'options'); ?></p>
+                                  <div _ngcontent-rva-c29="" class="address-week">
+                                      <ul _ngcontent-rva-c29="" class="address">
+                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=phone_link]' ); ?></li>
+                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=next_phone_link]' ); ?></li>
+                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=email_link]' ); ?></li>
+                                        <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=address]' ); ?></li>
+                                     </ul>
 
-                                 <?php if( have_rows('week') ): ?>
                                    <ul _ngcontent-rva-c29="" class="week">
-                                      <?php while( have_rows('week') ): the_row();
-                                          // vars
-                                          $image = get_sub_field('imgs');
-                                           $title = get_sub_field('title');
-                                           $right = get_sub_field('right');
-                                           $left = get_sub_field('left');
-                                          // $link = get_sub_field('link');  ?>
-
-
-                                            <li _ngcontent-rva-c29=""> <?= $left; ?> <span _ngcontent-rva-c29=""><?= $right; ?></span></li>
-
-                                        <?php endwhile; ?>
-                                       </ul>
-                                    <?php endif; ?>
-
-
-                                </div>
-                             </div>
+                                      <li _ngcontent-rva-c29=""><?= get_field('time_work', 'options'); ?></li>
+                                      <li _ngcontent-rva-c29=""> <?= get_field('consultations', 'options'); ?></li>
+                                   </ul>
+   
+ 
+                                  </div>
+                               </div>
+                          
+                               
+                            
+                            </div>
                           </div>
-</div>
 
-                    <?php endwhile; ?>
-                <?php endif; ?>
+                      <?php endwhile; ?>
+                  <?php endif; ?>
 
+             
+             
               </div>
            </div>
         </section>
 
         <?php elseif( get_row_layout() == 'section_3' ): ?>
         
-        <?php  $image = get_sub_field('images'); ?>
+          <?php  $image = get_sub_field('images'); ?>
 
-        <section _ngcontent-rva-c29="" class="appointment-area pb-100">
+          <section _ngcontent-rva-c29="" class="appointment-area pb-100">
            <div _ngcontent-rva-c29="" class="container">
               <div _ngcontent-rva-c29="" class="appointment-here-form">
                  <form _ngcontent-rva-c29="">
@@ -259,7 +294,7 @@ get_header(); ?>
            </div>
         </section>
 
-        <section _ngcontent-rva-c29="" class="services-area services-area-two ptb-100"  <?php if( !empty( $image ) ): ?>style="background:#fff url(<?php echo esc_url($image['url']); ?>) no-repeat center; background-size: cover; background-attachment: fixed;"<?php endif; ?>>
+          <section _ngcontent-rva-c29="" class="services-area services-area-two ptb-100"  <?php if( !empty( $image ) ): ?>style="background:#fff url(<?php echo esc_url($image['url']); ?>) no-repeat center; background-size: cover; background-attachment: fixed;"<?php endif; ?>>
            <div _ngcontent-rva-c29="" class="container">
               <div _ngcontent-rva-c29="" class="section-title">
 
@@ -274,13 +309,16 @@ get_header(); ?>
               </div>
 
 
-      <div + _ngcontent-rva-c29="" class="row">
+          <div + _ngcontent-rva-c29="" class="row services-area__slider">
 
+    
      <?php  
        $args = array(
           'order' => 'DESC', // order filter  last post
           'post_type'  => 'services', // Post type category BLOG
-          'posts_per_page' => 6, // echo show three post 
+          'posts_per_page' => 6, // echo show three post
+             'orderby' => 'post__in', 
+    'post__in' => array(230,226,231,769,232,770),
         );
         // The Query
         $the_query = new WP_Query( $args );
@@ -297,7 +335,7 @@ get_header(); ?>
                        <div + _ngcontent-rva-c29="" class="col-lg-4 col-sm-6">    
 
                        <div class="owl-item cloned" style="">
-                          <div _ngcontent-rva-c29="" class="single-services">
+                          <div _ngcontent-rva-c29="" class="single-services-section">
                              <div _ngcontent-rva-c29="" class="services-img">
 
                               <a _ngcontent-rva-c29="" href="<?= get_the_permalink(); ?>">
@@ -325,125 +363,15 @@ get_header(); ?>
 
 
                  </div>
+                 
+                 
            </div>
-
-           <?php if(0){ ?>
-
-             <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -100;">
-                <div style="background-position: 50% 50%; background-size: 100%; background-repeat: no-repeat; background-image: url(&quot;https://vuci-ng.envytheme.com/services-bg.4a3c2cfb6bb94a643f12.jpg&quot;); position: fixed; top: 0px; left: 0px; width: 2225.65px; height: 920.4px; overflow: hidden; pointer-events: none; margin-left: -192.326px; margin-top: -137.7px; visibility: visible; transform: translateY(87.3px) translateZ(0px);"></div>
-             </div>
-
-           <?php } ?>
 
         </section>
 
-        <?php if(0){ ?>
-          <section class="section bg--white--shaped cs--carousel isolated--bottom">
-
-              <div class="media-block block--col block--md">
-                  <div class="center--block center--text">
-                     <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                        <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                      <?php endif; ?>
-                  </div>
-
-
-                  <section class="section block--row gallery js-paginate-slider gap--xs">
-
-
-                    <?php if( have_rows('box_list') ): ?>
-
-                        <?php while( have_rows('box_list') ): the_row();
-                            // vars
-                            $image = get_sub_field('img');
-                            $titlee = get_sub_field('titlee');
-                            $paragraph = get_sub_field('paragraph');
-                            $link = get_sub_field('link');  ?>
-
-                              <?php if( $link ): 
-                                    $link_url = $link['url'];
-                                    $link_title = $link['title'];
-                                    $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                  <a + href="<?php echo esc_url( $link_url ); ?>" class="btn btn--tertiary btn--xl f-1 block--col  <?php if(get_row_index() == '1'){ echo 'btn__active'; } ?>" target="<?php echo esc_attr( $link_target ); ?>">
-                                    <?= $titlee; ?>
-                              <?php else: ?>
-
-                                <a + href="#" class="btn btn--tertiary btn--xl f-1 block--col  <?php if(get_row_index() == '1'){ echo 'btn__active'; } ?>" target="<?php echo esc_attr( $link_target ); ?>">demo
-
-                              <?php endif; ?>
-
-                                  <h3 + class="center--block"><?= $title; ?></h3>
-
-                             <?php if( $link ): ?>
-                                </a>
-                             <?php else: ?>
-                                </a>
-                             <?php endif; ?>
-
-                          <?php endwhile; ?>
-
-                      <?php endif; ?>
-
-
-                  </section>
-              </div>
-
-
-              <div class="media-block--container">
-
-
-                    <?php if( have_rows('box_list') ): ?>
-
-                        <?php while( have_rows('box_list') ): the_row();
-                            // vars
-                            $image = get_sub_field('img');
-                            $titlee = get_sub_field('titlee');
-                           // $paragraph = get_sub_field('paragraph');
-                            $link = get_sub_field('link');  ?>
-
-                                <figure class="isolated--sm media-block block--md block--double js-content-slider"
-                                    style="display: none; left: 20%; opacity: 0;">
-                                    <div class="media-block--text-content center--block f-1">
-
-                                   <?php if( get_sub_field('paragraph')): ?><!-- if under__the -->
-                                      <?php the_sub_field('paragraph'); ?>
-                                    <?php endif; ?>
-
-                                      <?php if( $link ): 
-                                            $link_url = $link['url'];
-                                            $link_title = $link['title'];
-                                            $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                          <a + href="<?php echo esc_url( $link_url ); ?>" class="btn btn--primary" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-                                        <?php endif; ?>
-
-                                    </div>
-                                    <div class="media-block--image-content f-1">
-
-                                      <?php if( !empty( $image ) ): ?>
-                                          <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>" width="400px">
-                                      <?php endif; ?>        
-
-                                    </div>
-                                </figure>
-
-                          <?php endwhile; ?>
-
-                      <?php endif; ?>
-
-
-              </div>
-
-
-
-</section>
-        <?php } ?>
-
         <?php elseif( get_row_layout() == 'section_4' ): ?> 
-        
-        
-        
 
-        <section _ngcontent-hmn-c29="" class="doctors-area pt-100 pb-70">
+          <section _ngcontent-hmn-c29="" class="doctors-area pt-100 pb-70">
            <div _ngcontent-hmn-c29="" class="container">
               <div _ngcontent-hmn-c29="" class="section-title">
 
@@ -459,52 +387,94 @@ get_header(); ?>
               <div _ngcontent-hmn-c29="" class="row">
                     
         <div class="box__doctors__slid">    
-     <?php  
-       $args = array(
-            'order' => 'DESC', // order filter  last post
-            'post_type'  => 'doctors', // Post type category BLOG
-            'posts_per_page' => -1, // echo show three post 
-        );
-        // The Query
-        $the_query = new WP_Query( $args );
+           <?php  
+             $args = array(
+                  'order' => 'DESC', // order filter  last post
+                  'post_type'  => 'doctors', // Post type category BLOG
+                  'posts_per_page' => -1, // echo show three post 
+              );
+              // The Query
+              $the_query = new WP_Query( $args );
 
-        // The Loop
-        if ( $the_query->have_posts() ) {
+              // The Loop
+              if ( $the_query->have_posts() ) {
 
-            while ( $the_query->have_posts() ) {
-                $the_query->the_post();  ?>
+                  while ( $the_query->have_posts() ) {
+                      $the_query->the_post();  ?>
 
-                <div>
+                      <div>
 
-                    <div _ngcontent-hmn-c29="" class="single-doctors-user">
-                       <div _ngcontent-hmn-c29="" class="doctors-img">
+                          <div _ngcontent-hmn-c29="" class="single-doctors-user">
+                             <div _ngcontent-hmn-c29="" class="doctors-img">
+
+
+                               <a href="<?=  get_the_permalink(); ?>"> <img _ngcontent-hmn-c29="" src="<?= get_the_post_thumbnail_url( get_the_ID(), 'doctor_img' ); ?>" alt="Image"> </a>
+
+
+                                <ul _ngcontent-hmn-c29="">
+                                   <li _ngcontent-hmn-c29=""><span>Я на :</span> </li>
+                                   
+                                   
+             <?php // check if the flexible content field has rows of data
+                  if( have_rows('doctors') ):
+                       // loop through the rows of data
+                      while ( have_rows('doctors') ) : the_row(); ?>
+                      <?php if( get_row_layout() == 'section_1' ): ?>
+
+                        <?php if( have_rows('soseal') ): ?>
+
+                          <?php while( have_rows('soseal') ): the_row();
+                              // vars
+                              $facebook = get_sub_field('facebook');
+                              $youtube = get_sub_field('youtube'); ?>
+
+
+                              <?php if( $facebook ): 
+                                    $link_url = $facebook['url'];
+                                    $link_title = $facebook['title'];
+                                    $link_target = $facebook['target'] ? $facebook['target'] : '_self'; ?>
+
+                                      <li _ngcontent-kpp-c20=""><a _ngcontent-kpp-c20="" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><i _ngcontent-kpp-c20="" class="bx bxl-facebook"></i></a></li>
+
+                              <?php endif; ?>
+
+
+                              <?php if( $youtube ): 
+                                    $link_url = $youtube['url'];
+                                    $link_title = $youtube['title'];
+                                    $link_target = $youtube['target'] ? $youtube['target'] : '_self'; ?>
+
+                                      <li _ngcontent-kpp-c20=""><a _ngcontent-kpp-c20="" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><i _ngcontent-kpp-c20="" class="bx bxl-youtube"></i></a></li>
+
+                              <?php endif; ?>
+
+
+                            <?php endwhile; ?>
+             
+                        <?php endif; ?>
+
+                    <?php endif;
+                    endwhile;
+                endif; ?>
                          
-                         
-                         <a href="<?=  get_the_permalink(); ?>"> <img _ngcontent-hmn-c29="" src="<?= get_the_post_thumbnail_url( get_the_ID(), 'doctor_img' ); ?>" alt="Image"> </a>
-                          
-                          
-                          <ul _ngcontent-hmn-c29="">
-                             <li _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" href="#" target="_blank"><i _ngcontent-hmn-c29="" class="bx bxl-facebook"></i></a></li>
-                             <li _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" href="#" target="_blank"><i _ngcontent-hmn-c29="" class="bx bxl-pinterest-alt"></i></a></li>
-                             <li _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" href="#" target="_blank"><i _ngcontent-hmn-c29="" class="bx bxl-twitter"></i></a></li>
-                          </ul>
-                       </div>
-                       <div _ngcontent-hmn-c29="" class="doctors-content">
-                          <span _ngcontent-hmn-c29="">Cosmetic Surgeon</span>
-                          <h3 _ngcontent-hmn-c29=""><a href="<?= get_the_permalink(); ?>"><?= get_the_title(); ?></a></h3>
-                       </div>
-                    </div>
-              
-                </div>
-              
-           <?php }
+                                </ul>
+                             </div>
+                             <div _ngcontent-hmn-c29="" class="doctors-content">
+                                <span _ngcontent-hmn-c29="">Cosmetic Surgeon</span>
+                                <h3 _ngcontent-hmn-c29=""><a href="<?= get_the_permalink(); ?>"><?= get_the_title(); ?></a></h3>
+                             </div>
+                          </div>
 
-        } else {
-            // no posts found
-        }
-        /* Restore original Post Data */
-        wp_reset_postdata();
-      ?>
+                      </div>
+
+                 <?php }
+
+              } else {
+                  // no posts found
+              }
+              /* Restore original Post Data */
+              wp_reset_postdata();
+            ?>
       </div>     
             
               </div>
@@ -518,72 +488,16 @@ get_header(); ?>
                     $link_title = $link['title'];
                     $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
-                  <a _ngcontent-dyl-c29="" routerlink="/" class="default-btn"  href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                  <a _ngcontent-dyl-c29="" routerlink="/" class="default-yallow"  href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
               <?php endif; ?>
               </div>
              </div>
            </div>
         </section>
  
-        <?php if(0){ ?>
-          <section class="section bg--gray">
-              <div class="media-block">
-                  <div class=" center--block center--text">
-
-                   <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                    <?php endif; ?>
-
-                  </div>
-              </div>
-              <div class="section media-block">
-                  <div class="gallery--cards">
-
-
-                    <?php if( have_rows('box_list') ): ?>
-
-                        <?php while( have_rows('box_list') ): the_row();
-                            // vars
-                            $image = get_sub_field('imge');
-                            $title = get_sub_field('title');
-                            $paragraph = get_sub_field('paragraph');
-                            $link = get_sub_field('link');  ?>
-
-                              <div class="gallery--card-item card-item isolated--sm bg--white f-1">
-                                  <figure class="media-block--image-content cs--cards">
-                                    <?php if( !empty( $image ) ): ?>
-                                        <img + src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>" height="80px">
-                                    <?php endif; ?>        
-                                  </figure>
-                                  <h4 class="text-block--paragraph"><?= $title; ?></h4>
-                                  <p class="text-block--paragraph"><?= $paragraph; ?></p>
-                              </div>
-
-                          <?php endwhile; ?>
-
-                      <?php endif; ?>
-
-                  </div>
-              </div>
-              <div class="section media-block isolated--xs">
-
-                  <?php $link = get_sub_field('link'); ?>
-
-                  <?php if( $link ): 
-                        $link_url = $link['url'];
-                        $link_title = $link['title'];
-                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                      <a + href="<?php echo esc_url( $link_url ); ?>" class="btn btn--secondary__ghost center--block" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-                  <?php endif; ?>
-
-              </div>
-          </section>
-        <?php } ?>
-        
         <?php elseif( get_row_layout() == 'section_5' ): ?>
 
-        <section _ngcontent-isl-c46="" class="services-area ptb-100">
+          <section _ngcontent-isl-c46="" class="services-area ptb-100">
            <div _ngcontent-isl-c46="" class="container">
              
              
@@ -626,7 +540,7 @@ get_header(); ?>
                               $the_query->the_post();  ?>
 
                                <div _ngcontent-isl-c46="" class="col-lg-4 col-sm-6">
-                                  <div _ngcontent-isl-c46="" class="single-services">
+                                  <div _ngcontent-isl-c46="" class="single-services-section">
                                     <div _ngcontent-isl-c46="" class="box__img"><a _ngcontent-isl-c46="" href="<?= get_the_permalink(); ?>">
                                     <img _ngcontent-isl-c46="" src="<?= get_the_post_thumbnail_url( get_the_ID()); ?>" alt="Image">
                                     </a></div>
@@ -651,155 +565,9 @@ get_header(); ?>
            <div _ngcontent-isl-c46="" class="services-shape"><img _ngcontent-isl-c46="" src="<?= get_template_directory_uri(); ?>/img/services-shape.png" alt="Image"></div>
         </section>
 
-          
-        <?php if(0){ ?>
-          <section class="section bg--gray isolated--top">
-            <div class="media-block">
-                <div class="center--text center--block">
-                    <?php if( get_sub_field('sub_text')): ?><!-- if under__the -->
-                      <h3 + class="text-block--title"><?php the_sub_field('sub_text'); ?></h3>
-                    <?php endif; ?>                
-                    <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="section media-block block--col cs--integrations bg--integrations">
-
-            <div class="gallery--grid">
-
-                <?php if( have_rows('box_list') ): ?>
-
-                    <?php while( have_rows('box_list') ): the_row();
-                        // vars
-                        $image = get_sub_field('img');
-                        $title = get_sub_field('title');
-                        $paragraph = get_sub_field('paragraph');
-                        $link = get_sub_field('link');  ?>
-
-                        <?php if( get_row_index() == '4' || get_row_index() == '3' || get_row_index() == '2' || get_row_index() == '1'){?>
-
-                            <?php if( $link ): 
-                                  $link_url = $link['url'];
-                                  $link_title = $link['title'];
-                                  $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                                <a + href="<?php echo esc_url( $link_url ); ?>" class="grid-item " target="<?php echo esc_attr( $link_target ); ?>">
-                            <?php endif; ?>
-
-                                  <?php if( !empty( $image ) ): ?>
-                                      <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>">
-                                  <?php endif; ?> 
-
-                             <?php if( $link ): ?>  
-                                    </a>
-                             <?php endif; ?>
-
-                          <?php } ?>
-
-                      <?php endwhile; ?>
-
-                  <?php endif; ?>
-
-             </div>
-
-            <div class="gallery--grid">
-
-                <?php if( have_rows('box_list') ): ?>
-
-                    <?php while( have_rows('box_list') ): the_row();
-                        // vars
-                        $image = get_sub_field('img');
-                        $title = get_sub_field('title');
-                        $paragraph = get_sub_field('paragraph');
-                        $link = get_sub_field('link');  ?>
-
-                        <?php if(get_row_index() == '5' || get_row_index() == '6' || get_row_index() == '7' || get_row_index() == '8' || get_row_index() == '9'){?>
-
-                            <?php if( $link ): 
-                                  $link_url = $link['url'];
-                                  $link_title = $link['title'];
-                                  $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                                <a + href="<?php echo esc_url( $link_url ); ?>" class="grid-item " target="<?php echo esc_attr( $link_target ); ?>">
-                            <?php endif; ?>
-
-                                  <?php if( !empty( $image ) ): ?>
-                                      <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>">
-                                  <?php endif; ?> 
-
-                             <?php if( $link ): ?>  
-                                    </a>
-                             <?php endif; ?>
-
-                          <?php } ?>
-
-                      <?php endwhile; ?>
-
-                  <?php endif; ?>
-
-             </div>
-
-            <div class="gallery--grid">
-
-                <?php if( have_rows('box_list') ): ?>
-
-                    <?php while( have_rows('box_list') ): the_row();
-                        // vars
-                        $image = get_sub_field('img');
-                        $title = get_sub_field('title');
-                        $paragraph = get_sub_field('paragraph');
-                        $link = get_sub_field('link');  ?>
-
-                        <?php if(get_row_index() == '10' || get_row_index() == '11' || get_row_index() == '12' || get_row_index() == '13'){?>
-
-                            <?php if( $link ): 
-                                  $link_url = $link['url'];
-                                  $link_title = $link['title'];
-                                  $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                                <a + href="<?php echo esc_url( $link_url ); ?>" class="grid-item " target="<?php echo esc_attr( $link_target ); ?>">
-                            <?php endif; ?>
-
-                                  <?php if( !empty( $image ) ): ?>
-                                      <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>">
-                                  <?php endif; ?> 
-
-                             <?php if( $link ): ?>  
-                                    </a>
-                             <?php endif; ?>
-
-                          <?php } ?>
-
-                      <?php endwhile; ?>
-
-                  <?php endif; ?>
-
-             </div>
-
-            </div>
-            <div class="media-block isolated--xs">
-
-               <?php $link = get_sub_field('link'); ?>
-
-                <?php if( $link ): 
-                      $link_url = $link['url'];
-                      $link_title = $link['title'];
-                      $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                    <a + href="<?php echo esc_url( $link_url ); ?>" class="btn btn--secondary__ghost center--block" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-                <?php endif; ?>
-
-            </div>
-        </section>
-        <?php } ?>
-        
-        
-
         <?php elseif( get_row_layout() == 'section_6' ): ?>
-          
-          
-<section _ngcontent-hmn-c29="" class="counter-area pb-100">
+
+           <section _ngcontent-hmn-c29="" class="counter-area pb-100">
    <div _ngcontent-hmn-c29="" class="container">
       <div _ngcontent-hmn-c29="" class="counter-bg" style="background: #eaecf1 url('<?= get_template_directory_uri(); ?>/img/counter-bg.03326bc2e4a1f5ffb6eb.png');">
          <div _ngcontent-hmn-c29="" class="row">
@@ -815,7 +583,7 @@ get_header(); ?>
             
              <div _ngcontent-hmn-c29="" class="col-lg-3 col-sm-6">
                <div _ngcontent-hmn-c29="" class="single-counter">
-                  <i _ngcontent-hmn-c29="" class="flaticon-satisfy"></i>
+                  <i _ngcontent-hmn-c29="" class="<?php if(get_row_index() == '1'){ echo 'flaticon-satisfy'; }else if(get_row_index() == '2'){ echo 'flaticon-doctor'; }else if(get_row_index() == '3'){ echo 'flaticon-hospital-bed'; }else if(get_row_index() == '4'){ echo 'flaticon-experience'; } ?>"></i>
                   <h2 _ngcontent-hmn-c29="">
                      <span _ngcontent-hmn-c29="" data-count="1688" class="odometer odometer-auto-theme"> <?= $title; ?> </span>
                   </h2>
@@ -827,98 +595,15 @@ get_header(); ?>
           <?php endwhile; ?>
 
       <?php endif; ?>
-         
-           
-
-         <?php if(0){ ?>
-            <div _ngcontent-hmn-c29="" class="col-lg-3 col-sm-6">
-               <div _ngcontent-hmn-c29="" class="single-counter">
-                  <i _ngcontent-hmn-c29="" class="flaticon-doctor"></i>
-                  <h2 _ngcontent-hmn-c29="">
-                     <span _ngcontent-hmn-c29="" data-count="100" class="odometer odometer-auto-theme">
-                        <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">1</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div>
-                     </span>
-                     <span _ngcontent-hmn-c29="" class="target">+</span>
-                  </h2>
-                  <h3 _ngcontent-hmn-c29="">Medical specialist</h3>
-               </div>
-            </div>
-            <div _ngcontent-hmn-c29="" class="col-lg-3 col-sm-6">
-               <div _ngcontent-hmn-c29="" class="single-counter">
-                  <i _ngcontent-hmn-c29="" class="flaticon-hospital-bed"></i>
-                  <h2 _ngcontent-hmn-c29="">
-                     <span _ngcontent-hmn-c29="" data-count="347" class="odometer odometer-auto-theme">
-                        <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">3</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></div>
-                     </span>
-                  </h2>
-                  <h3 _ngcontent-hmn-c29="">Medical beds</h3>
-               </div>
-            </div>
-            <div _ngcontent-hmn-c29="" class="col-lg-3 col-sm-6">
-               <div _ngcontent-hmn-c29="" class="single-counter">
-                  <i _ngcontent-hmn-c29="" class="flaticon-experience"></i>
-                  <h2 _ngcontent-hmn-c29="">
-                     <span _ngcontent-hmn-c29="" data-count="25" class="odometer odometer-auto-theme">
-                        <div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">2</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">5</span></span></span></span></span></div>
-                     </span>
-                     <span _ngcontent-hmn-c29="" class="target">+</span>
-                  </h2>
-                  <h3 _ngcontent-hmn-c29="">Years Of experience</h3>
-               </div>
-            </div>
-         <?php } ?>
-            
+   
          </div>
       </div>
    </div>
 </section>
-  
-          
-          
-   <?php if(0){ ?>
-          <section class="section bg--gray">
-            <div class="media-block block--md block--double card-item__ghost isolated--sm cs--whatsapp">
 
-                <div class="media-block--text-content center--block f-3">
-
-                    <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                    <?php endif; ?>
-
-                    <?php if( get_sub_field('content')): ?><!-- if under__the -->
-                      <p class="text-block--paragraph"><?php the_sub_field('content'); ?></p>
-                    <?php endif; ?>
-
-                      <?php $link = get_sub_field('link'); ?>
-
-                      <?php if( $link ): 
-                            $link_url = $link['url'];
-                            $link_title = $link['title'];
-                            $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                          <a + href="<?php echo esc_url( $link_url ); ?>" class="btn btn--primary btn--sm center--block" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-                      <?php endif; ?>
-
-
-                </div>
-                <figure class="media-block--image-content f-2">
-
-                    <?php $image = get_sub_field('imag'); ?>
-
-                    <?php if( !empty( $image ) ): ?>
-                        <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>" width="281px">
-                    <?php endif; ?>        
-
-
-                </figure>
-            </div>
-        </section>
-  <?php } ?>
         <?php elseif( get_row_layout() == 'section_7' ): ?>
-        
-        
 
-           <section _ngcontent-bes-c34="" class="our-portfolio-area ptb-100">
+           <section id="doctorhome" _ngcontent-bes-c34="" class="our-portfolio-area ptb-100">
            <div _ngcontent-bes-c34="" class="container">
               <div _ngcontent-bes-c34="" class="section-title">
                 
@@ -979,7 +664,7 @@ get_header(); ?>
                 
                 
              <div _ngcontent-bes-c34="" class="row">
-                    <a _ngcontent-dyl-c29="" routerlink="/" class="default-btn" href="https://mma.uh-vpn.org/all-doctors/" target="_self">Бесплатная консультация 24/7</a>
+                    <a _ngcontent-dyl-c29="" routerlink="/" class="default-btn default-yallow" data-fancybox="" data-src="#modal__open" href="javascript:;">Бесплатная консультация 24/7</a>
              </div>
                  
                  
@@ -989,58 +674,6 @@ get_header(); ?>
            </div>
         </section>
 
-       
-   <?php if(0){ ?>
-        sssssssssssssss
-
-        <section class="section bg--white--shaped__flip">
-              <div class="media-block">
-                  <div class="center--text center--block">
-
-                    <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                    <?php endif; ?>
-
-                  </div>
-              </div>
-            <div>
-              <div class="gallery--testimonial">
-
-                  <?php if( have_rows('box_list') ): ?>
-
-                      <?php while( have_rows('box_list') ): the_row();
-                          // vars
-                          $image = get_sub_field('img');
-                          $title = get_sub_field('title');
-                          $paragraph = get_sub_field('paragraph');
-                          $position = get_sub_field('position');
-                          $link = get_sub_field('link');  ?>
-
-
-                            <div class="gallery--testimonial-item testimonial-item bg--white">
-                                  <p class="text-block--description"><?= $paragraph; ?></p>
-                                  <div class="testimonial--persona">
-                                      <span class="testimonial--persona__image">
-                                        <?php if( !empty( $image ) ): ?>
-                                            <img src="<?php echo esc_url($image['url']); ?>"  alt="<?php echo esc_attr($image['alt']); ?>">
-                                        <?php endif; ?>       
-                                      </span>
-                                      <span class="testimonial--persona__text">
-                                          <p class="persona__name"><?= $title; ?></p>
-                                          <p class="persona__from"><?= $position; ?></p>
-                                      </span>
-                                  </div>
-                              </div>
-
-                        <?php endwhile; ?>
-
-                    <?php endif; ?>
-
-
-                 </div>
-            </div>
-        </section>
-    <?php } ?>
         <?php elseif( get_row_layout() == 'section_8' ): ?>
             
 
@@ -1058,28 +691,30 @@ get_header(); ?>
 
                     
                   </div>
-                  <div _ngcontent-bes-c19="" class="row">
+                  <div _ngcontent-bes-c19="" class="sertification">
                    
 
-        <?php if( have_rows('box_list') ): ?>
+                    <?php if( have_rows('box_list') ): ?>
 
-            <?php while( have_rows('box_list') ): the_row();
-                // vars
-                $image = get_sub_field('img');
-                $title = get_sub_field('title');
-                $paragraph = get_sub_field('paragraph');  
-                $link = get_sub_field('link');  ?>
-            
-                     <div _ngcontent-bes-c19="" class="col-lg-3 col-sm-6">
-                        <div _ngcontent-bes-c19="" class="single-services">
-                          <div _ngcontent-bes-c19="" class="services-img"><a _ngcontent-rva-c29="" href="<?php echo esc_url($image['url']); ?>" data-fancybox="images"><img _ngcontent-bes-c19="" src="<?php echo $image['sizes']['pictare']; ?>" alt="Image"></a></div>
-      
-                        </div>
-                     </div>
+                        <?php while( have_rows('box_list') ): the_row();
+                            // vars
+                            $image = get_sub_field('img');
+                            $title = get_sub_field('title');
+                            $paragraph = get_sub_field('paragraph');  
+                            $link = get_sub_field('link');  ?>
 
-              <?php endwhile; ?>
+                                 <div _ngcontent-bes-c19="" class="col-lg-3 col-sm-6">
+                                    <div _ngcontent-bes-c19="" class="single-services">
+                                      <div _ngcontent-bes-c19="" class="services-img">
+                                        <a _ngcontent-rva-c29="" href="<?php echo esc_url($image['url']); ?>" data-fancybox="images" class="block__img__slider__"><img _ngcontent-bes-c19="" src="<?php echo $image['sizes']['pictare']; ?>" alt="Image"></a>
+                                      </div>
 
-          <?php endif; ?>
+                                    </div>
+                                 </div>
+
+                          <?php endwhile; ?>
+
+                      <?php endif; ?>
 
                     
 
@@ -1090,30 +725,7 @@ get_header(); ?>
                </div>
             </section>
 
-    <?php if(0){ ?>
-            <section class="isolated--top">
-                <div class=" bg--blue__secondary--textured isolated--xxl">
-                    <div class="center--text center--block">
-
-                    <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <h2 + class="text-block--title"><?php the_sub_field('title'); ?></h2>
-                    <?php endif; ?>
-
-                        <form id="signUpWithEmail" class="gap--xxs" >
-                            <input class="input input--primary btn--md" name="email" required
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,20}" type="text"
-                                placeholder="Email Empresarial">
-                            <button type="submit" class="btn btn--primary">Empieza tu prueba gratuita</button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-    <?php } ?>
-         
-         
         <?php elseif( get_row_layout() == 'section_9' ): ?>
-        
-        
 
             <section _ngcontent-bes-c19="" class="section__comment services-area certificates services-area-two bg-t ptb-100">
                <div _ngcontent-bes-c19="" class="container">
@@ -1131,7 +743,8 @@ get_header(); ?>
                   </div>
                   <div _ngcontent-bes-c19="" class="row box__comment">
 
-                    <?php
+                    
+                 <?php
                     while ( have_posts() ) :
                         the_post();
 
@@ -1146,10 +759,8 @@ get_header(); ?>
                   </div>
                </div>
             </section>
-            
-            
-        <?php elseif( get_row_layout() == 'section_10' ): ?>
 
+        <?php elseif( get_row_layout() == 'section_10' ): ?>
 
           <section _ngcontent-hmn-c29="" class="blog-area pt-100 pb-70">
              <div _ngcontent-hmn-c29="" class="container">
@@ -1194,22 +805,24 @@ get_header(); ?>
                            <div _ngcontent-hmn-c29="" class="col-lg-4 col-md-6">
                               <div _ngcontent-hmn-c29="" class="single-blog-post">
                                  <div _ngcontent-hmn-c29="" class="blog-img">
-                                    <a _ngcontent-hmn-c29="" routerlink="/blog-details" href="/blog-details">
+                                    <a _ngcontent-hmn-c29="" routerlink="/blog-details" href="<?= get_the_permalink(); ?>">
                                       <img _ngcontent-hmn-c29="" src="<?= get_the_post_thumbnail_url( get_the_ID(), 'news' ); ?>" alt="Image">
                                     </a>
                                     <div _ngcontent-hmn-c29="" class="date">
                                        <ul _ngcontent-hmn-c29="">
-                                          <li _ngcontent-hmn-c29="">07</li>
-                                          <li _ngcontent-hmn-c29="">Sep</li>
+                                          <li _ngcontent-pem-c12=""><?= the_date('d'); ?></li>
+                                          <li _ngcontent-pem-c12=""><?= the_time('M'); ?></li>
                                        </ul>
                                     </div>
                                  </div>
                                  <div _ngcontent-hmn-c29="" class="blog-content">
-                                    <span _ngcontent-hmn-c29="">General news</span>
-                                    <h3 _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="/blog-details">It might be time to seek a medical your muscle and joint pain</a></h3>
+                                    <span _ngcontent-hmn-c29="">Новости</span>
+                                    <h3 _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="<?= get_the_permalink(); ?>"><?=  the_title(); ?></a></h3>
                                     <ul _ngcontent-hmn-c29="">
+                                      <?php if(0){ ?>
                                        <li _ngcontent-hmn-c29="">By: <a _ngcontent-hmn-c29="" routerlink="/" href="/">Curtis Warren</a></li>
-                                       <li _ngcontent-hmn-c29="" class="read"><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="/blog-details">Read More <i _ngcontent-hmn-c29="" class="flaticon-right-arrow"></i></a></li>
+                                         <?php } ?>
+                                       <li _ngcontent-hmn-c29="" class="read"><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="<?= get_the_permalink(); ?>">Подробнее <i _ngcontent-hmn-c29="" class="flaticon-right-arrow"></i></a></li>
                                     </ul>
                                  </div>
                               </div>
@@ -1227,11 +840,14 @@ get_header(); ?>
              
                                 <div _ngcontent-hmn-c29="" class="single-blog-post">
                                    <div _ngcontent-hmn-c29="" class="blog-content">
-                                      <span _ngcontent-hmn-c29="">General news</span>
-                                      <h3 _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="/blog-details">Read up on different types of fevers that may require a doctor</a></h3>
+                                      <span _ngcontent-hmn-c29="">Новости</span>
+                                      <h3 _ngcontent-hmn-c29=""><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="<?= get_the_permalink(); ?>"><?=  the_title(); ?></a></h3>
                                       <ul _ngcontent-hmn-c29="">
+                                                                              <?php if(0){ ?>
                                          <li _ngcontent-hmn-c29="">By: <a _ngcontent-hmn-c29="" routerlink="/" href="/">Milton Baines</a></li>
-                                         <li _ngcontent-hmn-c29="" class="read"><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="/blog-details">Read More <i _ngcontent-hmn-c29="" class="flaticon-right-arrow"></i></a></li>
+                                         
+                                           <?php } ?>
+                                         <li _ngcontent-hmn-c29="" class="read"><a _ngcontent-hmn-c29="" routerlink="/blog-details" href="<?= get_the_permalink(); ?>">Подробнее <i _ngcontent-hmn-c29="" class="flaticon-right-arrow"></i></a></li>
                                       </ul>
                                    </div>
                                 </div>
@@ -1340,11 +956,9 @@ get_header(); ?>
              </div>
           </section>
 
-       
         <?php elseif( get_row_layout() == 'section_11' ): ?>
-        
-        
-<section _ngcontent-rsh-c37="" class="pricing-area pt-100 pb-70">
+
+          <section _ngcontent-rsh-c37="" class="pricing-area pt-100 pb-70">
    <div _ngcontent-rsh-c37="" class="container">
       <div _ngcontent-rsh-c37="" class="section-title">
 
@@ -1439,10 +1053,7 @@ get_header(); ?>
       </div>
    </div>
 </section>
-        
 
-
-         
           <?php endif;
           endwhile;
       endif; ?>

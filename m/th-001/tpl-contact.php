@@ -16,6 +16,11 @@ get_header(); ?>
         <?php if( get_row_layout() == 'section_1' ): ?>
 
             <section _ngcontent-fya-c17="" class="contact-area ptb-100">
+            
+            <div _ngcontent-fya-c17="" class="container">
+              <?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?>
+            </div>
+               
                <div _ngcontent-fya-c17="" class="container">
                   <div _ngcontent-akt-c7="" class="section-title">
                     
@@ -25,10 +30,7 @@ get_header(); ?>
                     
                   </div>
                </div>
-            <div _ngcontent-fya-c17="" class="container">
-              <?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?>
-            </div>
-               
+
                <div _ngcontent-fya-c17="" class="container">
                   <div _ngcontent-fya-c17="" class="row">
                      <div _ngcontent-fya-c17="" class="col-lg-8">
@@ -39,15 +41,15 @@ get_header(); ?>
                            <form _ngcontent-fya-c17="" id="contactForm">
                               <div _ngcontent-fya-c17="" class="row">
                                  <div _ngcontent-fya-c17="" class="col-lg-6 col-sm-6">
-                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Name</label><input _ngcontent-fya-c17="" type="text" name="name" id="name" class="form-control"></div>
+                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Имя</label><input _ngcontent-fya-c17="" type="text" name="name" id="name" class="form-control"></div>
                                  </div>
                                  <div _ngcontent-fya-c17="" class="col-lg-6 col-sm-6">
-                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Phone</label><input _ngcontent-fya-c17="" type="text" name="phone_number" id="phone_number" required="" class="form-control"></div>
+                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Номер</label><input _ngcontent-fya-c17="" type="text" name="phone_number" id="phone_number" required="" class="form-control"></div>
                                  </div>
                                  <div _ngcontent-fya-c17="" class="col-12">
-                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Message</label><textarea _ngcontent-fya-c17="" name="message" id="message" cols="30" rows="10" class="form-control"></textarea></div>
+                                    <div _ngcontent-fya-c17="" class="form-group"><label _ngcontent-fya-c17="">Сообщение</label><textarea _ngcontent-fya-c17="" name="message" id="message" cols="30" rows="10" class="form-control"></textarea></div>
                                  </div>
-                                 <div _ngcontent-fya-c17="" class="col-lg-12 col-md-12"><button _ngcontent-fya-c17="" type="submit" class="default-btn btn-two"> Send Message </button></div>
+                                 <div _ngcontent-fya-c17="" class="col-lg-12 col-md-12"><button _ngcontent-fya-c17="" type="submit" class="default-btn btn-two"> Отправить </button></div>
                               </div>
                            </form>
                         </div>
@@ -64,13 +66,11 @@ get_header(); ?>
                       $image = get_sub_field('image');
                       $link = get_sub_field('link'); ?>
                       
-<div _ngcontent-bfe-c17="" class="address-and-week">
-  
-                    <?php if( get_sub_field('title')): ?><!-- if under__the -->
-                      <p + _ngcontent-rva-c29=""><?php the_sub_field('title'); ?></p>
-                     <?php endif; ?>
+                  <div _ngcontent-bfe-c17="" class="address-and-week">
 
-               <div _ngcontent-bfe-c17="" class="address-week">
+                     
+                     <?php if(0){ ?>
+                       <div _ngcontent-bfe-c17="" class="address-week">
                   <ul _ngcontent-bfe-c17="" class="address">
 
 
@@ -129,7 +129,30 @@ get_header(); ?>
                </ul>
             <?php endif; ?>
          </div>
-      </div>
+                     <?php } ?>
+                     
+                      <div _ngcontent-rva-c29="" class="address-and-week">
+
+                                <p + _ngcontent-rva-c29=""><?= get_field('title_info', 'options'); ?></p>
+                          <div _ngcontent-rva-c29="" class="address-week">
+                              <ul _ngcontent-rva-c29="" class="address">
+                                <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=phone_link]' ); ?></li>
+                                <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=next_phone_link]' ); ?></li>
+                                <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=email_link]' ); ?></li>
+                                <li _ngcontent-rva-c29=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i><span _ngcontent-rva-c29=""></span><?= do_shortcode( '[code var=address]' ); ?></li>
+                             </ul>
+
+                           <ul _ngcontent-rva-c29="" class="week">
+                              <li _ngcontent-rva-c29=""><?= get_field('time_work', 'options'); ?></li>
+                              <li _ngcontent-rva-c29=""> <?= get_field('consultations', 'options'); ?></li>
+                           </ul>
+
+
+                          </div>
+                       </div>
+                          
+                     
+                  </div>
                       
          <?php endwhile; ?>
                 <?php endif; ?>
