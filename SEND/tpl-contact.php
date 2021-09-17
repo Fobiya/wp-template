@@ -120,6 +120,8 @@ get_header(); ?>
               
                           data: msg,
                           success: function() {
+                              $.fancybox.close();
+                            
                               $('form').trigger("reset");
                               setTimeout(function(){  $("[name=send]").removeAttr("disabled"); }, 1000);
                             
@@ -141,6 +143,9 @@ get_header(); ?>
                                     $('#fancybox-content').css({height:'800px',width:'675px'});
                                 }
                                });
+                            
+                            
+                             setTimeout(function(){    $.fancybox.close(); }, 1000);
 
                           },
                           error: function(xhr, str) {
@@ -162,7 +167,7 @@ get_header(); ?>
 
  $('[class*="phone"]').mask("+1(999) 999-9999");
   
-  
+ $('[class*="phone"]').mask("+38(999) 999-99-99");
    
  </script>
    

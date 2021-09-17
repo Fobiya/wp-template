@@ -22,7 +22,8 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+
+  
 
   <!-- #header -->
   <?php if(0){ ?>
@@ -60,4 +61,9 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
-  <?php } ?>  <!-- END #header -->
+
+
+  <?php } ?>  
+  <!-- END #header -->
+
+	

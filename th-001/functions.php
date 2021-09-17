@@ -7,8 +7,10 @@
  * @package th-001
  */
 
+// OFF NEW REDACTOR
 
-
+add_filter('use_block_editor_for_post', '__return_false');
+add_filter('use_block_editor_for_page', '__return_false'); 
 
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -144,39 +146,44 @@ add_action( 'widgets_init', 'th_001_widgets_init' );
  * Enqueue scripts and styles.
  */
 function th_001_scripts() {
-	wp_enqueue_style( 'th-001-style', get_stylesheet_uri(), array(), _S_VERSION );
-  //  wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
-  //  wp_enqueue_style('d5985eb31e51d23e8a5c', get_template_directory_uri() . '/css/styles.d5985eb31e51d23e8a5c.css');
+//	wp_enqueue_style( 'th-001-style', get_stylesheet_uri(), array(), _S_VERSION );
+  wp_enqueue_style('style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+  wp_style_add_data('th-001-style', 'rtl', 'replace');
+  wp_enqueue_style('styles.min', get_template_directory_uri() . '/css/styles.min.css');
+  wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
+  wp_enqueue_style('starability', get_template_directory_uri() . '/css/starability-all.min.css');
   
-    wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
-    wp_enqueue_style('fancybox', get_template_directory_uri() . '/css/fancybox.css');
+  wp_enqueue_style('ba-slider-css', get_template_directory_uri() . '/css/ba-slider.css');
   
+  wp_enqueue_style('templayt', get_template_directory_uri() . '/css/templayt.css');
   
-  //  wp_enqueue_style( 'twd-googlefonts', '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' );
-  
-	wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
-  
-    if ( is_rtl() ) {
-      wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
-    }
-  
-  
-    wp_enqueue_script('jquery');
-  
-  
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js');
-    wp_enqueue_script( 'jquery' );
-  
-  
-    wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/fancybox.js', array('jquery'), null, true);
-  	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), null, true);
+  wp_enqueue_style('fancybox', get_template_directory_uri() . '/css/jquery.fancybox.css');
 
-	wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+  
+//  wp_enqueue_style('twd-googlefonts', '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+  
+  if ( is_rtl() ) {
+    wp_enqueue_style('style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
+  }
+
+  wp_enqueue_script('jquery');
+  
+  
+  wp_deregister_script('jquery');
+  wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js');
+  wp_enqueue_script('jquery');
+
+  
+  wp_enqueue_script('maskedinput', get_template_directory_uri() . '/js/jquery.maskedinput.min.js', array('jquery'), null, true);
+  
+  wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js', array('jquery'), null, true);
+  wp_enqueue_script('th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), null, true);
+//  wp_enqueue_script('slick.min', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), null, true);
+
+  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+      wp_enqueue_script( 'comment-reply' );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'th_001_scripts' );
 
@@ -209,11 +216,10 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
-
-
-
-// ADD NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW
-
+/**
+ * breadcrumbs
+ */
+require get_template_directory() . '/breadcrumbs.php';
 
 
 
@@ -222,22 +228,11 @@ wp_enqueue_script('jquery');
 
 
 
-// DLOCK EDITOR STANDART 
+
+// OFF NEW REDACTOR
 
 add_filter('use_block_editor_for_post', '__return_false');
 add_filter('use_block_editor_for_page', '__return_false'); 
-
-
-// ADD IMAGES
-
-add_image_size( 'demo', 285, 350, true  );
-
-
-
-
-
-
-
 
 
 
@@ -304,9 +299,10 @@ function jsuni($name)
 }
 
 
+add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
 
-
-
+//Template
+  
 /* plz no comment */
 if (function_exists('acf_add_options_page')) {
 
@@ -333,51 +329,6 @@ register_nav_menus(
         'social' => __( 'Social Links Menu'),
     )
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//// Отключаем сам REST API
-//add_filter('rest_enabled', '__return_false');
-//// Отключаем фильтры REST API
-//remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
-//remove_action( 'wp_head', 'rest_output_link_wp_head', 10, 0 );
-//remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
-//remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
-//remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
-//remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
-//remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
-//remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
-//remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
-//// Отключаем события REST API
-//remove_action( 'init', 'rest_api_init' );
-//remove_action( 'rest_api_init', 'rest_api_default_filters', 10, 1 );
-//remove_action( 'parse_request', 'rest_api_loaded' );
-//// Отключаем Embeds связанные с REST API
-//remove_action( 'rest_api_init', 'wp_oembed_register_route');
-//remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10, 4 );
-
-
-//remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-//remove_action( 'wp_head', '_wp_render_title_tag', 1 );
-
-
-//add_action( 'init', function() {
-//    remove_post_type_support( 'post', 'editor' );
-//    remove_post_type_support( 'page', 'editor' );
-//}, 99);
-
 
 
 
@@ -457,6 +408,23 @@ acf_add_options_page( array(
 function code_config($atts)
 {
 	switch ($atts['var']) {
+// user__instagram
+		case "user__instagram":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			///remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+              return ' <a href="https://www.instagram.com/' .  get_field('__instagram', 'options') . '" target="_blank"><i class="fab fa-instagram"></i> ' .   get_field('__instagram', 'options') . '</a>';
+         
+              break;  
+        
+// clinic__instagram
+		case "clinic__instagram":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			///remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+
+              return ' <a href="https://www.instagram.com/' .  get_field('clin__instagram', 'options') . '" target="_blank"><i class="fab fa-instagram"></i> ' .   get_field('clin__instagram', 'options') . '</a>';
+         
+              break;
+        
 // Site URL
 		case "url_site":
 		   //add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
@@ -506,9 +474,7 @@ function code_config($atts)
 // tel
 		case "tel":
 		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-            
-            
-            
+
 			$code_phone = get_field('code_phone', 'options');
 			$title_phone = get_field('title_phone', 'options');
 			if (!empty($atts['title'])) {
@@ -524,13 +490,28 @@ function code_config($atts)
 		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
 
             $set_phone = get_field('set_phone', 'options'); 
+
+            if( $set_phone ): 
+//                  $set_phone_url = $set_phone['url'];
+//                  $set_phone_title = $set_phone['title'];
+//                  $set_phone_target = $set_phone['target'] ? $set_phone_link['target'] : '_self'; 
+
+               return ' <a href="tel:' .  preg_replace('![^0-9+]+!', '', $set_phone)  . '">' .    $set_phone  . '</a>';
+            endif; 
+           
+			// remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+			break;
+		case "next_phone_link":
+		//add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
+
+            $set_phone = get_field('next_set_phone', 'options'); 
  
             if( $set_phone ): 
-                  $set_phone_url = $set_phone['url'];
-                  $set_phone_title = $set_phone['title'];
-                  $set_phone_target = $set_phone['target'] ? $set_phone_link['target'] : '_self'; 
+//                  $set_phone_url = $set_phone['url'];
+//                  $set_phone_title = $set_phone['title'];
+//                  $set_phone_target = $set_phone['target'] ? $set_phone_link['target'] : '_self'; 
 
-               return ' <a href="' .  esc_url( $set_phone_url ) . '">' .   esc_html( $set_phone_title ) . '</a>';
+              return ' <a href="tel:' .  preg_replace('![^0-9+]+!', '', $set_phone)  . '">' .    $set_phone  . '</a>';
             endif; 
            
 			// remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
@@ -565,267 +546,165 @@ add_shortcode('readmore', 'readmore_shortcode');
 
 
 
-//NEW register_post_type
 
 
-//function news()
-//{
-//	register_post_type('news', array(
-//		'labels' => array(
-//			'name'				=> __('News', 'news-admin'),
-//			'singular_name'   	=> __('News', 'news-admin'),
-//			'add_new'		 	=> __('Add post news', 'news-admin'),
-//			'add_new_item'		=> __('Add post news', 'news-admin'),
-//			'edit'				=> __('Edit post news', 'news-admin'),
-//			'edit_item'	   		=> __('Edit post news', 'news-admin'),
-//			'new_item'			=> __('New post news', 'news-admin'),
-//			'all_items'	   		=> __('All post news', 'news-admin'),
-//			'view'				=> __('View post news', 'news-admin'),
-//			'view_item'	   		=> __('View post news', 'news-admin'),
-//			'search_items'		=> __('Search post news', 'news-admin'),
-//			'not_found'	   		=> __('News not found', 'news-admin'),
-//		),
-//		'public' => true, // show in admin panel?
-//		'menu_position' => 24,
-//		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_news'),
-//		'has_archive' => false,
-//		'capability_type' => 'post',
-//		'menu_icon'   => 'dashicons-admin-page',
-//		'rewrite' => array('slug' => 'news'),
-//	));
+
+
+
+
+
+
+function blog()
+{
+	register_post_type('blog', array(
+		'labels' => array(
+			'name'				=> __('Блог', 'blog-admin'),
+			'singular_name'   	=> __('Блог', 'blog-admin'),
+			'add_new'		 	=> __('Add post blog', 'blog-admin'),
+			'add_new_item'		=> __('Add post blog', 'blog-admin'),
+			'edit'				=> __('Edit post blog', 'blog-admin'),
+			'edit_item'	   		=> __('Edit post blog', 'blog-admin'),
+			'new_item'			=> __('New post blog', 'blog-admin'),
+			'all_items'	   		=> __('All post blog', 'blog-admin'),
+			'view'				=> __('View post blog', 'blog-admin'),
+			'view_item'	   		=> __('View post blog', 'blog-admin'),
+			'search_items'		=> __('Search post blog', 'blog-admin'),
+			'not_found'	   		=> __('blog not found', 'blog-admin'),
+		),
+      
+
+		'public' => true, // show in admin panel?
+		'menu_position' => 29,
+		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+//		'taxonomies' => array('category_blog'),
+		'has_archive' => true,
+		'capability_type' => 'page',
+		'menu_icon'   => 'dashicons-admin-page',
+//		'rewrite' => array( ('slug' => 'blog', 'with_front' => false ),   
+	));
+}
+add_action('init', 'blog');
+
+
+
+
+
+
+//function sh_parse_request_tricksy( $query ) {
+//
+//    // Only loop the main query
+//    if ( ! $query->is_main_query() ) {
+//        return;
+//    }
+//
+//   //  Only loop our very specific rewrite rule match
+//    if ( 2 != count( $query->query )
+//        || ! isset( $query->query['page'] ) );
+//        return;
+//  
+//    if ( 3 != count( $query->query )
+//        || ! isset( $query->query['post'] ) );
+//        return;
+//
+//    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
+//    if ( ! empty( $query->query['name'] ) ) {
+//        $query->set( 'post_type', array( '/' ) );
+//    }
 //}
-//add_action('init', 'news');
+//add_action( 'pre_get_posts', 'sh_parse_request_tricksy' );
 
 
 
 
+add_image_size( 'postbefor', 625, 469, true  );
+
+add_image_size( 'blog', 390, 248, true  );
+
+
+
+//
+//add_filter('template_include', 'sermon_template_include');
+//function sermon_template_include($template) {
+//    if(get_query_var('post_type') == 'doctors') {
+//        if ( is_archive() || is_search() ) :
+//           if(file_exists(TEMPLATEDIR . '/archive-doctors.php'))
+//              return TEMPLATEDIR . '/archive-doctors.php';
+//           return dirname(__FILE__) . '/archive-doctors.php';
+//        else :
+//           if(file_exists(TEMPLATEDIR . '/single-doctors.php'))
+//              return TEMPLATEDIR . '/single-doctors.php';
+//           return dirname(__FILE__) . '/single-doctors.php';
+//        endif;
+//    }
+//    return $template;
+//}
+
+
+
+//function my_page_template_redirect(){
+//	if( is_page('service') && ! is_user_logged_in() ){
+//		wp_redirect( home_url( '/signup/' ) );
+//		exit();
+//	}
+//}
+//add_action( 'template_redirect', 'my_page_template_redirect' );
 
 
 
 
+//function include_template_files($template_file) {
+//  global $post;
+//  $plugindir = dirname( __FILE__ );
+//  if ('doctors' == get_post_type()){
+//    $templatefilename = 'mytemplate.php';
+//    	return get_stylesheet_directory() . '/doctors.php';
+//    return $template;
+//  }
+//  return $template_file;
+//}
+//add_filter( 'template_include', 'include_template_files' );
 
 
+//
+//add_filter( 'template_include', 'my_template' );
+//function my_template( $template ) {
+//	# шаблон для страниц для вывод одиночного события произвольного типа "events"
+//	// или is_post_type_archive('events'), если бы сделал 'has_archive' => 'events'
+//	if ( is_page( 'events' ) ) {
+//		return get_stylesheet_directory() . '/calendar/events.php';
+//	}
+//
+//	# шаблон для страниц для выводо одиночного события произвольного типа "events"
+//	if ( is_singular( 'events' ) ) {
+//		return get_stylesheet_directory() . '/calendar/single-events.php';
+//	}
+//
+//	# шаблон для страниц для выводо таксономий "Города"
+//	if ( is_tax( 'doctors' ) ) {
+//		return get_stylesheet_directory() . '/single-doctors.php';
+//	}
+//
+//	# шаблон для страниц для выводо таксономий "Календари"
+//	if ( is_tax( 'calendars' ) ) {
+//		return get_stylesheet_directory() . '/calendar/taxonomy/calendars.php';
+//	}
+//
+//	return $template;
+//}
 
 
-// dimox_breadcrumbs()
+function pages_template($pages){
 
-function dimox_breadcrumbs() {
-
-	/* === ОПЦИИ === */
-	$text['home']     = 'Home'; // текст ссылки "Главная"
-	$text['category'] = '%s'; // текст для страницы рубрики
-	$text['search']   = 'Search results for the query "%s"'; // текст для страницы с результатами поиска
-	$text['tag']      = 'Posts tagged "%s"'; // текст для страницы тега
-	$text['author']   = 'Author\'s articles %s'; // текст для страницы автора
-	$text['404']      = 'Error 404'; // текст для страницы 404
-	$text['page']     = 'Page %s'; // текст 'Страница N'
-	$text['cpage']    = 'Comments page %s'; // текст 'Страница комментариев N'
-
-	$wrap_before    = '<div class="tt-breadcrumb"><div class="breadcrumbs container" itemscope itemtype="http://schema.org/BreadcrumbList"><ul>'; // открывающий тег обертки
-	$wrap_after     = '</ul></div></div><!-- .breadcrumbs -->'; // закрывающий тег обертки
-//	$sep            = '<li class="breadcrumbs__separator ion-ios-arrow-forward"></li>'; // разделитель между "крошками"
-	$before         = '<li class="breadcrumbs__current">'; // тег перед текущей "крошкой"
-	$after          = '</li>'; // тег после текущей "крошки"
-
-	$show_on_home   = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
-	$show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-	$show_current   = 1; // 1 - показывать название текущей страницы, 0 - не показывать
-	$show_last_sep  = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
-	/* === КОНЕЦ ОПЦИЙ === */
-
-	global $post;
-	$home_url       = home_url('/');
-	$link           = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-	$link          .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
-	$link          .= '<meta itemprop="position" content="%3$s" />';
-	$link          .= '</li>';
-	$parent_id      = ( $post ) ? $post->post_parent : '';
-	$home_link      = sprintf( $link, $home_url, $text['home'], 1 );
-
-	if ( is_home() || is_front_page() ) {
-
-		if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
-
-	} else {
-
-		$position = 0;
-
-		echo $wrap_before;
-
-		if ( $show_home_link ) {
-			$position += 1;
-			echo $home_link;
-		}
-
-		if ( is_category() ) {
-			$parents = get_ancestors( get_query_var('cat'), 'category' );
-			foreach ( array_reverse( $parents ) as $cat ) {
-				$position += 1;
-				if ( $position > 1 ) echo $sep;
-				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-			}
-			if ( get_query_var( 'paged' ) ) {
-				$position += 1;
-				$cat = get_query_var('cat');
-				echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-			} else {
-				if ( $show_current ) {
-					if ( $position >= 1 ) echo $sep;
-					echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
-				} elseif ( $show_last_sep ) echo $sep;
-			}
-
-		} elseif ( is_search() ) {
-			if ( get_query_var( 'paged' ) ) {
-				$position += 1;
-				if ( $show_home_link ) echo $sep;
-				echo sprintf( $link, $home_url . '?s=' . get_search_query(), sprintf( $text['search'], get_search_query() ), $position );
-				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-			} else {
-				if ( $show_current ) {
-					if ( $position >= 1 ) echo $sep;
-					echo $before . sprintf( $text['search'], get_search_query() ) . $after;
-				} elseif ( $show_last_sep ) echo $sep;
-			}
-
-		} elseif ( is_year() ) {
-			if ( $show_home_link && $show_current ) echo $sep;
-			if ( $show_current ) echo $before . get_the_time('Y') . $after;
-			elseif ( $show_home_link && $show_last_sep ) echo $sep;
-
-		} elseif ( is_month() ) {
-			if ( $show_home_link ) echo $sep;
-			$position += 1;
-			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
-			if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
-			elseif ( $show_last_sep ) echo $sep;
-
-		} elseif ( is_day() ) {
-			if ( $show_home_link ) echo $sep;
-			$position += 1;
-			echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
-			$position += 1;
-			echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
-			if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
-			elseif ( $show_last_sep ) echo $sep;
-
-		} elseif ( is_single() && ! is_attachment() ) {
-			if ( get_post_type() != 'post' ) {
-				$position += 1;
-				$post_type = get_post_type_object( get_post_type() );
-				if ( $position > 1 ) echo $sep;
-				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
-				if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-				elseif ( $show_last_sep ) echo $sep;
-			} else {
-				$cat = get_the_category(); $catID = $cat[0]->cat_ID;
-				$parents = get_ancestors( $catID, 'category' );
-				$parents = array_reverse( $parents );
-				$parents[] = $catID;
-				foreach ( $parents as $cat ) {
-					$position += 1;
-					if ( $position > 1 ) echo $sep;
-					echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-				}
-				if ( get_query_var( 'cpage' ) ) {
-					$position += 1;
-					echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
-					echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
-				} else {
-					if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-					elseif ( $show_last_sep ) echo $sep;
-				}
-			}
-
-		} elseif ( is_post_type_archive() ) {
-			$post_type = get_post_type_object( get_post_type() );
-			if ( get_query_var( 'paged' ) ) {
-				$position += 1;
-				if ( $position > 1 ) echo $sep;
-				echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
-				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-			} else {
-				if ( $show_home_link && $show_current ) echo $sep;
-				if ( $show_current ) echo $before . $post_type->label . $after;
-				elseif ( $show_home_link && $show_last_sep ) echo $sep;
-			}
-
-		} elseif ( is_attachment() ) {
-			$parent = get_post( $parent_id );
-			$cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
-			$parents = get_ancestors( $catID, 'category' );
-			$parents = array_reverse( $parents );
-			$parents[] = $catID;
-			foreach ( $parents as $cat ) {
-				$position += 1;
-				if ( $position > 1 ) echo $sep;
-				echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-			}
-			$position += 1;
-			echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
-			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-			elseif ( $show_last_sep ) echo $sep;
-
-		} elseif ( is_page() && ! $parent_id ) {
-			if ( $show_home_link && $show_current ) echo $sep;
-			if ( $show_current ) echo $before . get_the_title() . $after;
-			elseif ( $show_home_link && $show_last_sep ) echo $sep;
-
-		} elseif ( is_page() && $parent_id ) {
-			$parents = get_post_ancestors( get_the_ID() );
-			foreach ( array_reverse( $parents ) as $pageID ) {
-				$position += 1;
-				if ( $position > 1 ) echo $sep;
-				echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
-			}
-			if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-			elseif ( $show_last_sep ) echo $sep;
-
-		} elseif ( is_tag() ) {
-			if ( get_query_var( 'paged' ) ) {
-				$position += 1;
-				$tagID = get_query_var( 'tag_id' );
-				echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
-				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-			} else {
-				if ( $show_home_link && $show_current ) echo $sep;
-				if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
-				elseif ( $show_home_link && $show_last_sep ) echo $sep;
-			}
-
-		} elseif ( is_author() ) {
-			$author = get_userdata( get_query_var( 'author' ) );
-			if ( get_query_var( 'paged' ) ) {
-				$position += 1;
-				echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
-				echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
-			} else {
-				if ( $show_home_link && $show_current ) echo $sep;
-				if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
-				elseif ( $show_home_link && $show_last_sep ) echo $sep;
-			}
-
-		} elseif ( is_404() ) {
-			if ( $show_home_link && $show_current ) echo $sep;
-			if ( $show_current ) echo $before . $text['404'] . $after;
-			elseif ( $show_last_sep ) echo $sep;
-
-		} elseif ( has_post_format() && ! is_singular() ) {
-			if ( $show_home_link && $show_current ) echo $sep;
-			echo get_post_format_string( get_post_format() );
-		}
-
-		echo $wrap_after;
-
+	if (is_page('demo')) {
+		return get_stylesheet_directory() . '/demo.php';
 	}
-} // end of dimox_breadcrumbs()
 
-
-
-
-
-
-
+//	if ( is_singular( 'doctors' ) ) {
+////		return get_stylesheet_directory() . '/calendar/single-doctors.php';
+//		return get_stylesheet_directory() . '/single-doctors.php';
+//	}
+  
+  	return $pages;
+}
+add_filter('template_include', 'pages_template');
 

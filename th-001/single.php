@@ -7,6 +7,10 @@
  * @package th-001
  */
 
+/*
+Template Post Type: post, page
+*/
+
 get_header(); ?>
 <!-- #SINGLE -->
 	<main id="primary" class="site-main">
@@ -34,6 +38,10 @@ get_header(); ?>
 
 	</main><!-- #main -->
 <!-- END #SINGLE -->
+
+  <?=  get_template_part('tpl-maps'); ?>
+    
+
 <?php
 //get_sidebar();
 get_footer();
