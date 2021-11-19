@@ -10,109 +10,7 @@
  */
 
 ?>
-          
-      
- <section _ngcontent-hmn-c6="" class="footer-area footer-area-two pt-100 ">
-   <div _ngcontent-hmn-c6="" class="container">
-      <div _ngcontent-hmn-c6="" class="row">
-         <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
-            <div _ngcontent-hmn-c6="" class="single-footer-widget">
-             
-              <?php $logo = get_field('logo','option'); ?>
-              <?php if( !empty( $logo ) ): ?>
-                    <a _ngcontent-lyj-c5="" routerlink="/" href="/"><img src="<?php echo esc_url($logo['url']); ?>"  alt="<?php echo esc_attr($logo['alt']); ?>"></a>
-              <?php endif; ?>   
 
-                              <p _ngcontent-hmn-c6=""><?= get_field('title_info','option'); ?></p>
-               
-
-            </div>
-         </div>
-         <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
-            <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Наши Услуги</h3>
-               
-                  <ul _ngcontent-hmn-c6="">         
-                    <?php  
-                     $args = array(
-                          'order' => 'DESC', // order filter  last post
-                          'post_type'  => 'services', // Post type category BLOG
-                          'posts_per_page' => 7, // echo show three post 
-                      );
-                      // The Query
-                      $the_query = new WP_Query( $args );
-
-                      // The Loop
-                      if ( $the_query->have_posts() ) {
-
-                          while ( $the_query->have_posts() ) {
-                              $the_query->the_post(); ?>
-                            <li _ngcontent-tft-c43=""><a _ngcontent-tft-c43="" routerlink="/services-details" href="<?= get_the_permalink(); ?>"><?= get_the_title(); ?></a></li>
-                        <?  }
-
-                      } else {
-                          // no posts found
-                      }
-                      /* Restore original Post Data */
-                      wp_reset_postdata();
-                    ?>
-               </ul>
-            </div>
-         </div>
-         <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
-            <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Другое</h3>
-               
-                  <?php
-                    $fooargsm = array(
-                       'menu' => 'footer-right',
-              //        'container' => 'nav',
-              //        'container_class' => 'menu',
-              //        'before' => '<h2>', 
-              //        'after'  => '</h2>',
-                    );
-                  ?>
-               
-               <ul _ngcontent-hmn-c6="">
-                  <?php  wp_nav_menu( $fooargsm );?>
-               </ul>
-            </div>
-         </div>
-         <div _ngcontent-hmn-c6="" class="col-lg-3 col-md-6">
-            <div _ngcontent-hmn-c6="" class="single-footer-widget">
-               <h3 _ngcontent-hmn-c6="">Контакты</h3>
-
-               <ul _ngcontent-hmn-c6="" class="contact">
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i></span> <?= do_shortcode( '[code var=phone_link]' ); ?></li>
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-telephone-1"></i></span> <?= do_shortcode( '[code var=next_phone_link]' ); ?></li>
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-arroba"></i></span> <?= do_shortcode( '[code var=email_link]' ); ?></li>
-                  <li _ngcontent-hmn-c6=""><span _ngcontent-hmn-c6=""><i _ngcontent-rva-c29="" class="flaticon-address-1"></i></span> <?= do_shortcode( '[code var=address]' ); ?></li>
-               </ul>
-               <?php if(0){ ?>
-               <ul _ngcontent-hmn-c6="" class="open-day">
-                  <li _ngcontent-hmn-c6=""> <?= get_field('time_work','option'); ?></li>
-                  <li _ngcontent-hmn-c6=""> <?= get_field('consultations','option'); ?></li>
-               </ul>
-                 <?php } ?>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
-         
-<div _ngcontent-hmn-c6="" class="copy-right-area copy-right-area-two">
-   <div _ngcontent-hmn-c6="" class="container">
-      <p _ngcontent-hmn-c6="">
-
-        Copyright  &middot;  All Rights Are Reserved &copy; <?php echo date('Y'); ?> <a href="<?php echo get_site_url(); ?>"><?php echo get_bloginfo( 'name' ); ?></a>
-
-      </p>
-   </div>
-</div>   
-   
-   
-   <div _ngcontent-qkf-c6="" class="go-top active"><i _ngcontent-qkf-c6="" class="bx bx-chevrons-up"></i><i _ngcontent-qkf-c6="" class="bx bx-chevrons-up"></i></div>
-    
     
      <?php if(0){ ?>         
 
@@ -191,7 +89,7 @@
      <?php } ?>
 
 <!-- #wp_footer -->
-<?php if(0){ ?>
+
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'th-001' ) ); ?>">
@@ -207,7 +105,8 @@
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-<?php } ?>
+
+
 <?php if(0){ ?>
 <a class="bot_modal none" data-fancybox="" data-src="#modal__open" href="javascript:;">Open Modal</a>
 <?php } ?>
@@ -247,25 +146,25 @@
 <script>
   
 
-$( document ).ready(function() {
-
-  var height = $(window).scrollTop();
-
-  if(height => 150 ) {
-//    $('.navbar-area').addClass('is-sticky');
-  }
-
-  $(window).scroll(function() {
-      var height = $(window).scrollTop();
-
-      if(height > 150 ) {
-            $('.navbar-area').addClass('is-sticky');
-      } else {
-           $('.navbar-area').removeClass('is-sticky');
-      }
-  });
-  
-});
+//$( document ).ready(function() {
+//
+//  var height = $(window).scrollTop();
+//
+//  if(height => 150 ) {
+////    $('.navbar-area').addClass('is-sticky');
+//  }
+//
+//  $(window).scroll(function() {
+//      var height = $(window).scrollTop();
+//
+//      if(height > 150 ) {
+//            $('.navbar-area').addClass('is-sticky');
+//      } else {
+//           $('.navbar-area').removeClass('is-sticky');
+//      }
+//  });
+//  
+//});
 
 
 </script>

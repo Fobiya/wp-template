@@ -9,7 +9,7 @@
 
 get_header(); ?>
   <!-- #archive.php -->
-
+ <?php if(0){ ?>
   <div _ngcontent-pem-c12="" class="blog-column-three-area ptb-100">
    <div _ngcontent-pem-c12="" class="container">
       <h1 class="category_center"><?= single_cat_title(); ?></h1>
@@ -108,10 +108,7 @@ get_header(); ?>
       </div>
    </div>
 </div>
-  
-  
-  
-  <?php if(0){ ?>
+  <?php } ?>
 
 	<main id="primary" class="site-main">
 
@@ -148,10 +145,8 @@ get_header(); ?>
 		?>
 
 	</main><!-- #main -->
-	
-  <?php } ?>
-	
-	
+
+
   <!-- END #archive.php -->
 <?php
 //get_sidebar();

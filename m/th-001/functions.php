@@ -170,7 +170,7 @@ function th_001_scripts() {
     wp_enqueue_script( 'jquery' );
  
   
-  wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js', array('jquery'), null, true);
+    wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js', array('jquery'), null, true);
 	wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), null, true);
 	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), null, true);
 
@@ -822,93 +822,27 @@ function news()
 }
 add_action('init', 'news');
 
-function video_presentation()
-{
-	register_post_type('presentation', array(
-		'labels' => array(
-			'name'				=> __('Видео', 'presentation-admin'),
-			'singular_name'   	=> __('Видео', 'presentation-admin'),
-			'add_new'		 	=> __('Add post Видео', 'presentation-admin'),
-			'add_new_item'		=> __('Add post Видео', 'presentation-admin'),
-			'edit'				=> __('Edit post Видео', 'presentation-admin'),
-			'edit_item'	   		=> __('Edit post Видео', 'presentation-admin'),
-			'new_item'			=> __('New post Видео', 'presentation-admin'),
-			'all_items'	   		=> __('All post Видео', 'presentation-admin'),
-			'view'				=> __('View post Видео', 'presentation-admin'),
-			'view_item'	   		=> __('View post Видео', 'presentation-admin'),
-			'search_items'		=> __('Search post Видео', 'presentation-admin'),
-			'not_found'	   		=> __('Видео not found', 'presentation-admin'),
-		),
-		'public' => true, // show in admin panel?
-		'menu_position' => 25,
-		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_presentation'),
-		'has_archive' => true,
-		'capability_type' => 'post',
-		'menu_icon'   => 'dashicons-format-video',
-		'rewrite' => array('slug' => 'presentation'),
-	));
-}
-add_action('init', 'video_presentation');
-
-
-function services()
-{
-	register_post_type('services', array(
-		'labels' => array(
-			'name'				=> __('Услуги', 'services-admin'),
-			'singular_name'   	=> __('Услуги', 'services-admin'),
-			'add_new'		 	=> __('Add post services', 'services-admin'),
-			'add_new_item'		=> __('Add post services', 'services-admin'),
-			'edit'				=> __('Edit post services', 'services-admin'),
-			'edit_item'	   		=> __('Edit post services', 'services-admin'),
-			'new_item'			=> __('New post services', 'services-admin'),
-			'all_items'	   		=> __('All post services', 'services-admin'),
-			'view'				=> __('View post services', 'services-admin'),
-			'view_item'	   		=> __('View post services', 'services-admin'),
-			'search_items'		=> __('Search post services', 'services-admin'),
-			'not_found'	   		=> __('Presentation not found', 'services-admin'),
-		),
-		'public' => true, // show in admin panel?
-		'menu_position' => 27,
-		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_presentation'),
-		'has_archive' => true,
-		'capability_type' => 'post',
-		'menu_icon'   => 'dashicons-welcome-write-blog',
-		'rewrite' => array('slug' => 'services'),
-	));
-}
-add_action('init', 'services');
 
 
 
 
-add_image_size( 'postcontent', 1230, 445, true  );
-add_image_size( 'catygorypost', 396, 213, true  );
-add_image_size( 'singledoctorpost', 390, 475, true  );
+//add_image_size( 'postcontent', 1230, 445, true  );
+//add_image_size( 'catygorypost', 396, 213, true  );
+//add_image_size( 'singledoctorpost', 390, 475, true  );
 
+//add_image_size( 'doctor_img', 285, 350, true  );
 
+//add_image_size( 'post_img', 370, 200, true  );
+//add_image_size( 'video_img', 330, 178, true  );
 
+//add_image_size( 'ourportfolio', 285, 314, true  );
 
+//add_image_size( 'pictare', 265, 370, true  );
+//add_image_size( 'services', 810, 500, true  );
 
-add_image_size( 'doctor_img', 285, 350, true  );
+//add_image_size( 'gallery__ser', 390, 250, true  );
 
-add_image_size( 'post_img', 370, 200, true  );
-add_image_size( 'video_img', 330, 178, true  );
-
-
-
-add_image_size( 'ourportfolio', 285, 314, true  );
-
-add_image_size( 'pictare', 265, 370, true  );
-add_image_size( 'services', 810, 500, true  );
-
-add_image_size( 'gallery__ser', 390, 250, true  );
-
-
-
-add_image_size( 'news', 390, 248, true  );
+//add_image_size( 'news', 390, 248, true  );
 
 
 
@@ -1047,7 +981,6 @@ function pages_template($pages){
 //		return get_stylesheet_directory() . '/single-doctors.php';
 //	}
 //  
-
 
   
   	return $pages;
