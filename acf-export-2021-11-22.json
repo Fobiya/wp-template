@@ -249,9 +249,9 @@
         "location": [
             [
                 {
-                    "param": "post_type",
+                    "param": "post_status",
                     "operator": "==",
-                    "value": "post"
+                    "value": "private"
                 }
             ]
         ],
@@ -498,7 +498,7 @@
                 "key": "field_60ab5bf88f491",
                 "label": "Phone",
                 "name": "set_phone",
-                "type": "link",
+                "type": "text",
                 "instructions": "[code var=phone_link]",
                 "required": 0,
                 "conditional_logic": 0,
@@ -507,7 +507,30 @@
                     "class": "",
                     "id": ""
                 },
-                "return_format": "array"
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_61040af56c2a6",
+                "label": "Phone",
+                "name": "next_set_phone",
+                "type": "text",
+                "instructions": "[code var=next_phone_link]",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             },
             {
                 "key": "field_5cab504119d29",
@@ -668,6 +691,32 @@
                         "min": "",
                         "max": "1"
                     },
+                    "layout_60b291e2625e3": {
+                        "key": "layout_60b291e2625e3",
+                        "name": "google_1",
+                        "label": "google",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_60b291e2625e4",
+                                "label": "google",
+                                "name": "google",
+                                "type": "url",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
                     "layout_5c51ace4281be": {
                         "key": "layout_5c51ace4281be",
                         "name": "instagram_1",
@@ -782,6 +831,58 @@
                                 "key": "field_5e94f057cf616",
                                 "label": "telegram",
                                 "name": "telegram",
+                                "type": "url",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_6103b0478f247": {
+                        "key": "layout_6103b0478f247",
+                        "name": "viber_1",
+                        "label": "viber",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_6103b0478f248",
+                                "label": "viber",
+                                "name": "viber",
+                                "type": "url",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_6103b0ae8f249": {
+                        "key": "layout_6103b0ae8f249",
+                        "name": "whatsapp_1",
+                        "label": "whatsapp",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_6103b0ae8f24a",
+                                "label": "whatsapp",
+                                "name": "whatsapp",
                                 "type": "url",
                                 "instructions": "",
                                 "required": 0,
