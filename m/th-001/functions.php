@@ -142,43 +142,47 @@ function th_001_widgets_init() {
 }
 add_action( 'widgets_init', 'th_001_widgets_init' );
 
+
+
+wp_enqueue_script('jquery');
+
 /**
  * Enqueue scripts and styles.
  */
 function th_001_scripts() {
-//	wp_enqueue_style( 'th-001-style', get_stylesheet_uri(), array(), _S_VERSION );
-    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css', array(), filemtime(get_template_directory() . '/style.css'), false);
+
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
 	wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
-  wp_enqueue_style('d5985eb31e51d23e8a5c', get_template_directory_uri() . '/css/styles.d5985eb31e51d23e8a5c.css');
-  wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
-  
-  wp_enqueue_style('fancybox', get_template_directory_uri() . '/css/jquery.fancybox.css');
+//    wp_enqueue_style('d5985eb31e51d23e8a5c', get_template_directory_uri() . '/css/styles.d5985eb31e51d23e8a5c.css');
+    wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
+
+    wp_enqueue_style('fancybox', get_template_directory_uri() . '/css/jquery.fancybox.css');
 
   
-  wp_enqueue_style( 'twd-googlefonts', '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' );
+ //   wp_enqueue_style( 'twd-googlefonts', '//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap' );
 //  wp_enqueue_style( 'bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' );
   
     if ( is_rtl() ) {
-      wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css', array(), filemtime(get_template_directory() . '/style-rtl.css'), false);
+      wp_enqueue_style( 'style-rtl', get_template_directory_uri() . '/style-rtl.css' );
     }
-  
-    wp_enqueue_script('jquery');
-  
-  
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js');
-    wp_enqueue_script( 'jquery' );
+
+    wp_enqueue_script( 'main-ajax-js', get_stylesheet_directory_uri() .'/js/main-ajax.js', array(), '1.0', true );
+    wp_localize_script( 'main-ajax-js', 'php_vars', array('ajax_url' => admin_url("admin-ajax.php")) );
  
   
-    wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js', array('jquery'), null, true);
-	wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), null, true);
-	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), null, true);
+    wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js',  array(), '1.0', true );
+	//wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), null, true);
+	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js',  array(), '1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'th_001_scripts' );
+
+require_once 'main-ajax.php';
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -208,7 +212,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-wp_enqueue_script('jquery');
+
 
 
 
@@ -732,95 +736,36 @@ function dimox_breadcrumbs() {
 
 
 
-function create_doctors(){
-	register_post_type('doctors', array(
-		'labels' => array(
-			'name'				=> __('Doctors', 'doctors-admin'),
-			'singular_name'   	=> __('doctors', 'doctors-admin'),
-			'add_new'		 	=> __('Add post doctors', 'doctors-admin'),
-			'add_new_item'		=> __('Add post doctors', 'doctors-admin'),
-			'edit'				=> __('Edit post doctors', 'doctors-admin'),
-			'edit_item'	   		=> __('Edit post doctors', 'doctors-admin'),
-			'new_item'			=> __('New post doctors', 'doctors-admin'),
-			'all_items'	   		=> __('All post doctors', 'doctors-admin'),
-			'view'				=> __('View post doctors', 'doctors-admin'),
-			'view_item'	   		=> __('View post doctors', 'doctors-admin'),
-			'search_items'		=> __('Search post doctors', 'doctors-admin'),
-			'not_found'	   		=> __('Doctors not found', 'doctors-admin'),
-		),
-		'public' => true, // show in admin panel?
-		'menu_position' => 22,
-		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_doctors'),
-		'has_archive' => true,
-		'capability_type' => 'post',
-		'menu_icon'   => 'dashicons-businessperson',
-		'rewrite' => array('slug' => 'doctors', 'with_front' => false ),
-	));
-}
-add_action('init', 'create_doctors');
 
 
-
-
-function accommodations()
-{
-	register_post_type('accommodations', array(
-		'labels' => array(
-			'name'				=> __('Размещение', 'accommodations-admin'),
-			'singular_name'   	=> __('Размещение', 'accommodations-admin'),
-			'add_new'		 	=> __('Add post accommodations', 'accommodations-admin'),
-			'add_new_item'		=> __('Add post accommodations', 'accommodations-admin'),
-			'edit'				=> __('Edit post accommodations', 'accommodations-admin'),
-			'edit_item'	   		=> __('Edit post accommodations', 'accommodations-admin'),
-			'new_item'			=> __('New post accommodations', 'accommodations-admin'),
-			'all_items'	   		=> __('All post accommodations', 'accommodations-admin'),
-			'view'				=> __('View post accommodations', 'accommodations-admin'),
-			'view_item'	   		=> __('View post accommodations', 'accommodations-admin'),
-			'search_items'		=> __('Search post accommodations', 'accommodations-admin'),
-			'not_found'	   		=> __('Аccommodations not found', 'accommodations-admin'),
-		),
-		'public' => true, // show in admin panel?
-		'menu_position' => 24,
-		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_accommodations'),
-		'has_archive' => true,
-		'capability_type' => 'post',
-		'menu_icon'   => 'dashicons-admin-home',
-		'rewrite' => array('slug' => 'accommodations', 'with_front' => false ),
-	));
-}
-add_action('init', 'accommodations');
-
-
-function news()
-{
-	register_post_type('news', array(
-		'labels' => array(
-			'name'				=> __('Новости', 'news-admin'),
-			'singular_name'   	=> __('Новости', 'news-admin'),
-			'add_new'		 	=> __('Add post news', 'news-admin'),
-			'add_new_item'		=> __('Add post news', 'news-admin'),
-			'edit'				=> __('Edit post news', 'news-admin'),
-			'edit_item'	   		=> __('Edit post news', 'news-admin'),
-			'new_item'			=> __('New post news', 'news-admin'),
-			'all_items'	   		=> __('All post news', 'news-admin'),
-			'view'				=> __('View post news', 'news-admin'),
-			'view_item'	   		=> __('View post news', 'news-admin'),
-			'search_items'		=> __('Search post news', 'news-admin'),
-			'not_found'	   		=> __('News not found', 'news-admin'),
-		),
-		'public' => true, // show in admin panel?
-		'menu_position' => 29,
-		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
-//		'taxonomies' => array('category_news'),
-		'has_archive' => true,
-		'capability_type' => 'post',
-		'menu_icon'   => 'dashicons-admin-page',
-		'rewrite' => array('slug' => 'news', 'with_front' => false ),
-	));
-}
-add_action('init', 'news');
+//function news()
+//{
+//	register_post_type('news', array(
+//		'labels' => array(
+//			'name'				=> __('Новости', 'news-admin'),
+//			'singular_name'   	=> __('Новости', 'news-admin'),
+//			'add_new'		 	=> __('Add post news', 'news-admin'),
+//			'add_new_item'		=> __('Add post news', 'news-admin'),
+//			'edit'				=> __('Edit post news', 'news-admin'),
+//			'edit_item'	   		=> __('Edit post news', 'news-admin'),
+//			'new_item'			=> __('New post news', 'news-admin'),
+//			'all_items'	   		=> __('All post news', 'news-admin'),
+//			'view'				=> __('View post news', 'news-admin'),
+//			'view_item'	   		=> __('View post news', 'news-admin'),
+//			'search_items'		=> __('Search post news', 'news-admin'),
+//			'not_found'	   		=> __('News not found', 'news-admin'),
+//		),
+//		'public' => true, // show in admin panel?
+//		'menu_position' => 29,
+//		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'page-attributes'),
+////		'taxonomies' => array('category_news'),
+//		'has_archive' => true,
+//		'capability_type' => 'post',
+//		'menu_icon'   => 'dashicons-admin-page',
+//		'rewrite' => array('slug' => 'news', 'with_front' => false ),
+//	));
+//}
+//add_action('init', 'news');
 
 
 
@@ -844,58 +789,6 @@ add_action('init', 'news');
 
 //add_image_size( 'news', 390, 248, true  );
 
-
-
-
-
-//ТАКСОНОМИЯ ПЕРСОНЫ
-add_action( 'init', 'create_taxname', 0 );
-function create_taxname () {
-$args = array(
-    'label' => _x( 'Персоны', 'taxonomy general name' ),
-    'labels' => array(
-    'name' => _x( 'Персоны', 'taxonomy general name' ),
-    'singular_name' => _x( 'Персоны', 'taxonomy singular name' ),
-    'menu_name' => __( 'Персоны' ),
-    'all_items' => __( 'Все Персоны' ),
-    'edit_item' => __( 'Изменить персону' ),
-    'view_item' => __( 'Просмотреть Персоны' ),
-    'update_item' => __( 'Обновить персону' ),
-    'add_new_item' => __( 'Добавить новую персону' ),
-    'new_item_name' => __( 'Название' ),
-    'parent_item' => __( 'Родительская' ),
-    'parent_item_colon' => __( 'Родительская:' ),
-    'search_items' => __( 'Поиск персон' ),
-    'popular_items' => null,
-    'separate_items_with_commas' => null,
-    'add_or_remove_items' => null,
-    'choose_from_most_used' => null,
-    'not_found' => __( 'Персону не найдено.' ),
-    ),
-    'public' => true,
-    'show_ui' => true,
-    'show_in_menu' => true,
-    'show_in_nav_menus' => true,
-    'show_tagcloud' => true,
-    'show_in_quick_edit' => true,
-    'show_in_rest' => true,
-    'meta_box_cb' => null,
-    'show_admin_column' => false,
-    'description' => '',
-    'hierarchical' => true,
-    'update_count_callback' => '',
-    'query_var' => true,
-    'rewrite' => array(
-    'slug' => 'person',
-    'with_front' => false,
-    'hierarchical' => true,
-    'ep_mask' => EP_NONE,
-),
-    'sort' => null,
-    '_builtin' => false,
-);
-register_taxonomy( 'person', array('post', 'accommodations'), $args );
-}
 
 
 //
@@ -969,20 +862,20 @@ register_taxonomy( 'person', array('post', 'accommodations'), $args );
 //}
 
 
-function pages_template($pages){
-
-	if (is_page('demo')) {
-		return get_stylesheet_directory() . '/demo.php';
-	}
-  
-  
-//	if ( is_singular( 'doctors' ) ) {
-////		return get_stylesheet_directory() . '/calendar/single-doctors.php';
-//		return get_stylesheet_directory() . '/single-doctors.php';
+//function pages_template($pages){
+//
+//	if (is_page('demo')) {
+//		return get_stylesheet_directory() . '/demo.php';
 //	}
 //  
-
-  
-  	return $pages;
-}
-add_filter('template_include', 'pages_template');
+//  
+////	if ( is_singular( 'doctors' ) ) {
+//////		return get_stylesheet_directory() . '/calendar/single-doctors.php';
+////		return get_stylesheet_directory() . '/single-doctors.php';
+////	}
+////  
+//
+//  
+//  	return $pages;
+//}
+//add_filter('template_include', 'pages_template');
