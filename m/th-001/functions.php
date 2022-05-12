@@ -176,7 +176,7 @@ function th_001_scripts() {
     }
 
     wp_enqueue_script( 'main-ajax-js', get_stylesheet_directory_uri() .'/js/main-ajax.js', array(), '1.0', true );
-    wp_localize_script( 'main-ajax-js', 'php_vars', array('ajax_url' => admin_url("admin-ajax.php")) );
+    wp_localize_script( 'main-ajax-js', 'php_vars', array('ajax_url' => admin_url("admin-ajax.php") ,  'nonce' => wp_create_nonce('ajax-nonce'))    ) );
  
   
     wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js',  array(), '1.0', true );
