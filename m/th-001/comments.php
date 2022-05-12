@@ -21,6 +21,7 @@
 ?>
 <!-- #comments -->
 <?php if(0){ ?>
+
 <div id="comments" class="comments-area">
 
 	<?php
@@ -76,5 +77,6 @@
 	?>
 
 </div><!-- #comments -->
+
 <?php } ?>
 <!-- END #comments -->

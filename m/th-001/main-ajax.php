@@ -27,7 +27,6 @@
             });
             $posts = get_posts( $options );
 
-
               echo '<ul class="list open">';
               foreach( $posts as $post ){   ?>
                   <li><a href="<?php echo the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></li>

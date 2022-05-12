@@ -12,7 +12,7 @@
 ?>
 
     
-     <?php if(0){ ?>         
+ <?php if(0){ ?>         
 
 		<ul class='social-networks tt-social-icon'>
 
@@ -86,11 +86,11 @@
 
 						</ul>
 						
-     <?php } ?>
+  <?php } ?>
 
 <!-- #wp_footer -->
 
-	<footer id="colophon" class="site-footer">
+	<footer class="site-footer">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'th-001' ) ); ?>">
 				<?php
@@ -108,32 +108,29 @@
 
 
 <?php if(0){ ?>
-<a class="bot_modal none" data-fancybox="" data-src="#modal__open" href="javascript:;">Open Modal</a>
-<?php } ?>
+
+    <a class="bot_modal none" data-fancybox="" data-src="#modal__open" href="javascript:;">Open Modal</a>
+
     <!-- //// MODAL ////-->
     <div id="modal__open" style="display: none;">
 
-           <form _ngcontent-rva-c29="" class="form__modal">
+       <form _ngcontent-rva-c29="" class="form__modal">
 
+          <h3 _ngcontent-rva-c29="">Заказать консультацию</h3>
 
-                    <h3 _ngcontent-rva-c29="">Заказать консультацию</h3>
+          <div _ngcontent-rva-c29="" class="form-group">
+             <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Имя*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
 
+          </div>
 
-                    <div _ngcontent-rva-c29="" class="form-group">
-                       <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Имя*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
+          <div _ngcontent-rva-c29="" class="form-group">
+             <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Номер телефона*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
 
-                    </div>
+          </div>
 
+         <button _ngcontent-rva-c29="" type="submit" class="default-btn"> ОТПРАВТЬ</button>
 
-
-                    <div _ngcontent-rva-c29="" class="form-group">
-                       <div _ngcontent-rva-c29="" id="datetimepicker" class="input-group date"><input _ngcontent-rva-c29="" type="text" placeholder="Номер телефона*" class="form-control"><span _ngcontent-rva-c29="" class="input-group-addon"></span></div>
-
-                    </div>
-
-                 <button _ngcontent-rva-c29="" type="submit" class="default-btn"> ОТПРАВТЬ</button>
-
-           </form>
+       </form>
 
     </div>
     
@@ -143,32 +140,33 @@
 
     </div>
 
-<script>
-  
-
-//$( document ).ready(function() {
-//
-//  var height = $(window).scrollTop();
-//
-//  if(height => 150 ) {
-////    $('.navbar-area').addClass('is-sticky');
-//  }
-//
-//  $(window).scroll(function() {
-//      var height = $(window).scrollTop();
-//
-//      if(height > 150 ) {
-//            $('.navbar-area').addClass('is-sticky');
-//      } else {
-//           $('.navbar-area').removeClass('is-sticky');
-//      }
-//  });
-//  
-//});
+    <script>
 
 
-</script>
+      //$( document ).ready(function() {
+      //
+      //  var height = $(window).scrollTop();
+      //
+      //  if(height => 150 ) {
+      ////    $('.navbar-area').addClass('is-sticky');
+      //  }
+      //
+      //  $(window).scroll(function() {
+      //      var height = $(window).scrollTop();
+      //
+      //      if(height > 150 ) {
+      //            $('.navbar-area').addClass('is-sticky');
+      //      } else {
+      //           $('.navbar-area').removeClass('is-sticky');
+      //      }
+      //  });
+      //  
+      //});
 
+
+    </script>
+
+<?php } ?>
 
 
 <?php wp_footer(); ?>

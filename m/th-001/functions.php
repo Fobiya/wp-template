@@ -13,6 +13,15 @@ add_filter('use_block_editor_for_post', '__return_false');
 add_filter('use_block_editor_for_page', '__return_false'); 
 
 
+
+
+
+//add_image_size( 'post__id', 300, 300, true  );
+
+
+
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -152,7 +161,7 @@ wp_enqueue_script('jquery');
 function th_001_scripts() {
 
     wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
-	wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
+	  wp_style_add_data( 'th-001-style', 'rtl', 'replace' );
 //    wp_enqueue_style('d5985eb31e51d23e8a5c', get_template_directory_uri() . '/css/styles.d5985eb31e51d23e8a5c.css');
     wp_enqueue_style('slick', get_template_directory_uri() . '/css/slick.css');
 
@@ -172,7 +181,7 @@ function th_001_scripts() {
   
     wp_enqueue_script('fansy-box', get_template_directory_uri() . '/js/jquery.fancybox.js',  array(), '1.0', true );
 	//wp_enqueue_script( 'th-001-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), null, true);
-	wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js',  array(), '1.0', true );
+	  wp_enqueue_script( 'slick.min', get_template_directory_uri() . '/js/slick.min.js',  array(), '1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -215,12 +224,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
-
-
-// OFF NEW REDACTOR
-
-add_filter('use_block_editor_for_post', '__return_false');
-add_filter('use_block_editor_for_page', '__return_false'); 
 
 
 
@@ -288,22 +291,6 @@ function jsuni($name)
 
 
 
-
-
-/* plz no comment */
-if (function_exists('acf_add_options_page')) {
-
-acf_add_options_page( array(
-		'page_title'    => __('Theme settings'),
-		'menu_title'    => __('Theme settings'),
-		'menu_slug'     => 'general-settings',
-		'capability'    => 'edit_posts',
-		'redirect'      => false
-	));
-
-  }
-
-
 // Setting a Post Thumbnail
 add_theme_support('post-thumbnails');
 // END Setting a Post Thumbnail
@@ -353,7 +340,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 /* plz no comment */
 if (function_exists('acf_add_options_page')) {
 
-acf_add_options_page( array(
+  acf_add_options_page( array(
 		'page_title'    => __('Theme settings'),
 		'menu_title'    => __('Theme settings'),
 		'menu_slug'     => 'general-settings',
@@ -361,34 +348,11 @@ acf_add_options_page( array(
 		'redirect'      => false
 	));
 
-  }
-
-
-/**
- * Advanced Custom Fields Options function
- * Always fetch an Options field value from the default language
- */
-
-//function cl_acf_set_language() {
-//return acf_get_setting('default_language');
-//}
-//
-//
-//function get_global_option($name)
-//{
-//	add_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-//	$option = get_field($name, 'option');
-//	remove_filter('acf/settings/current_language', 'cl_acf_set_language', 100);
-//	return $option;
-//}
+}
 
 
 
-//function cc_mime_types($mimes) {
-//  $mimes['svg'] = 'image/svg+xml';
-//  return $mimes;
-//}
-//add_filter('upload_mimes', 'cc_mime_types');
+
 
 
 // code LINKS
@@ -770,24 +734,6 @@ function dimox_breadcrumbs() {
 
 
 
-
-//add_image_size( 'postcontent', 1230, 445, true  );
-//add_image_size( 'catygorypost', 396, 213, true  );
-//add_image_size( 'singledoctorpost', 390, 475, true  );
-
-//add_image_size( 'doctor_img', 285, 350, true  );
-
-//add_image_size( 'post_img', 370, 200, true  );
-//add_image_size( 'video_img', 330, 178, true  );
-
-//add_image_size( 'ourportfolio', 285, 314, true  );
-
-//add_image_size( 'pictare', 265, 370, true  );
-//add_image_size( 'services', 810, 500, true  );
-
-//add_image_size( 'gallery__ser', 390, 250, true  );
-
-//add_image_size( 'news', 390, 248, true  );
 
 
 

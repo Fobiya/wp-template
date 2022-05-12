@@ -47,6 +47,7 @@ get_header(); ?>
 
 	</main><!-- #main -->
 <!-- END #search -->
+
 <?php
 //get_sidebar();
 get_footer();
