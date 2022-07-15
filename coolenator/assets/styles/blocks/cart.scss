@@ -1,0 +1,139 @@
+.woocommerce-cart table.cart img {
+  width: 80px;
+}
+
+.woocommerce .quantity .qty {
+  border: none;
+  border-bottom: 1px solid #121212;
+  font-size: 18px;
+}
+
+.woocommerce .cart .button {
+  background-color: #121212;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 0;
+  border: 1px solid #121212;
+  transition: all ease 0.7s;
+
+  &:hover {
+    color: #121212;
+    background-color: #fff;
+  }
+}
+
+.woocommerce-cart table.cart td.product-name a {
+  color: #121212;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.woocommerce-message {
+  border-top-color: #121212 !important;
+  color: #121212 !important;
+}
+
+.woocommerce-cart-form {
+  .btn-plus,
+  .btn-minus {
+    display: none;
+  }
+}
+
+.woocommerce-cart table.cart td.actions .coupon .input-text {
+  height: 46px;
+  width: 120px;
+}
+
+.woocommerce-cart .cart-collaterals .shipping-calculator-button {
+  color: #121212;
+}
+
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button {
+  border-radius: 0;
+  background-color: #121212;
+  color: #fff;
+  border: 1px solid #121212;
+  font-weight: 400;
+  transition: all ease 0.7s;
+
+  &:hover {
+    color: #121212;
+    background-color: #fff;
+  }
+}
+
+.woocommerce-info {
+  border-top-color: #121212;
+  color: #121212;
+
+  &::before {
+    color: #121212;
+  }
+
+  a {
+    color: #121212;
+  }
+}
+
+.woocommerce-checkout {
+  color: #121212;
+
+  input {
+    border: none;
+    border-bottom: 1px solid #121212;
+    padding: 5px 0 16px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+  }
+
+  textarea {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+  }
+}
+
+.create-account {
+  display: none;
+}
+
+.woocommerce-checkout #payment {
+  border-radius: 0 !important;
+  border: 1px solid #121212;
+  background-color: #fff;
+  margin-bottom: 40px;
+}
+
+.woocommerce-checkout #payment ul.payment_methods {
+  border-bottom: 1px solid #121212;
+}
+
+.woocommerce-checkout #payment .payment_method_paypal .about_paypal {
+  color: #121212;
+}
+
+.woocommerce-privacy-policy-link {
+  color: #121212;
+}
+
+.woocommerce button.button.alt {
+  background-color: #121212;
+  border-radius: 0;
+  border: 1px solid #121212;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+  transition: all ease 0.7s;
+  margin-top: 30px;
+
+  &:hover {
+    background-color: #fff;
+    color: #121212;
+  }
+}
+
+.delete_item.button.alt:hover {
+  background-color: #000;
+}

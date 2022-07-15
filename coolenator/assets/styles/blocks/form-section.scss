@@ -1,0 +1,22 @@
+.form_section {
+  padding: 160px 0;
+  background-image: url('../images/form.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .business-form-block {
+    margin: 0;
+    width: 100%;
+    box-shadow: 0 4px 40px rgba(1, 1, 1, 0.12);
+  }
+}
+
+.wpcf7-list-item {
+  margin: 0 !important;
+
+  label {
+    input {
+      width: auto !important;
+    }
+  }
+}

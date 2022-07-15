@@ -1,0 +1,44 @@
+/*!
+Theme Name: coolenator
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: coolenator
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+coolenator is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+.wpml-ls-legacy-list-horizontal{
+    padding: 0;
+    border: 0;
+}
+.wpml-ls-legacy-list-horizontal>ul{
+    display: flex;
+    flex-direction: column;
+}
+.wpml-ls-legacy-list-horizontal a{
+    padding: 5px 0;
+}
+.catalog-item .cart{
+width: 19px;
+}
+.wc-block-grid.wp-block-product-category.wc-block-product-category.has-3-columns.has-multiple-rows {
+    width: 100%;
+    max-width: 1209px;
+    padding: 0 20px;
+    margin: 0 auto;
+}

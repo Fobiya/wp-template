@@ -1,0 +1,396 @@
+.header {
+  padding: 20px 0;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      flex: 0 0 auto;
+      width: 126px;
+      margin-right: 40px;
+
+      @media (max-width: 992px) {
+        width: 100px;
+        margin-right: 20px;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .humberger {
+      cursor: pointer;
+      height: 12px;
+      width: 18px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 20px;
+
+      @media (max-width: 768px) {
+        display: flex;
+      }
+
+      span {
+        width: 100%;
+        border-radius: 5px;
+        height: 2px;
+        background-color: #121212;
+      }
+    }
+
+    .navigation {
+      .menu {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        bottom: 4px;
+
+        li {
+          padding: 8px 0;
+          margin-right: 38px;
+          list-style: none;
+          position: relative;
+          display: inline-block;
+
+          @media (max-width: 992px) {
+            margin-right: 15px;
+          }
+
+          a {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            text-decoration: none;
+            color: #121212;
+          }
+
+          &:hover {
+            .sub-menu {
+              opacity: 1;
+              visibility: visible;
+              transition: opacity ease 0.5s;
+            }
+          }
+
+          &.menu-item-has-children {
+            padding-right: 18px;
+
+            &::before {
+              transition: background ease 0.5s;
+              content: '';
+              width: 10px;
+              height: 5px;
+              background-image: url('../images/icons/bottom.png');
+              background-repeat: no-repeat;
+              background-size: contain;
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+            }
+
+            &:hover {
+              &::before {
+                background-image: url('../images/icons/top-blue.png');
+              }
+            }
+          }
+        }
+      }
+
+      .sub-menu {
+        opacity: 0;
+        z-index: 999999;
+        transition: opacity ease 0.5s, visibility ease 0.5s 0.1s;
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        width: 179px;
+        left: -1px;
+        padding: 0;
+        margin: 0;
+        border: 2px solid #4b4b4b;
+
+        li {
+          padding: 0;
+          width: 100%;
+          background-color: #fff;
+
+          a {
+            font-weight: 400;
+            padding: 12px;
+            font-size: 16px;
+            line-height: 20px;
+            display: block;
+          }
+
+          &:hover {
+            background-color: #bdf0ff;
+
+            a {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        top: -100vh;
+        display: flex;
+        visibility: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 9999;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        transition: top ease 1s, visibility ease 1s 1s;
+
+        ul.menu {
+          display: block;
+
+          li {
+            display: block;
+            padding: 0;
+            text-align: center;
+            margin: 0;
+
+            &.menu-item-has-children {
+              padding-right: 0;
+            }
+          }
+        }
+
+        .close {
+          cursor: pointer;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          top: 20px;
+          left: 20px;
+
+          &::before {
+            content: '';
+            height: 1px;
+            width: 30px;
+            transform: rotate(45deg);
+            display: block;
+            top: 15px;
+            position: relative;
+            background-color: #000;
+          }
+
+          &::after {
+            position: relative;
+            top: 15px;
+            content: '';
+            height: 1px;
+            display: block;
+            background-color: #000;
+            width: 30px;
+            transform: rotate(-45deg);
+          }
+        }
+
+        .active & {
+          transition: top ease 1s;
+          visibility: visible;
+          position: fixed;
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &-left {
+    .icon {
+      &-list {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+      }
+
+      &-item {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+        display: inline-block;
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+
+          &::after {
+            content: '';
+            transition: opacity ease 0.7s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+          }
+
+          &:hover {
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+
+        .search {
+          background-image: url('../images/icons/search.png');
+
+          &::after {
+            background-image: url('../images/icons/search-blue.png');
+          }
+        }
+
+        .favorite {
+          background-image: url('../images/icons/star.png');
+
+          &::after {
+            background-image: url('../images/icons/star-blue.png');
+          }
+        }
+
+        .account {
+          background-image: url('../images/icons/account.png');
+
+          &::after {
+            background-image: url('../images/icons/account-blue.png');
+          }
+        }
+
+        .language {
+          background-image: url('../images/icons/language.png');
+
+          &::after {
+            background-image: url('../images/icons/language.png');
+          }
+        }
+      }
+    }
+  }
+
+  .site-branding {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease 0.7s;
+
+    &.active {
+      transition: all ease 0.7s;
+      visibility: visible;
+      opacity: 1;
+      z-index: 999;
+    }
+
+    .search-submit {
+      width: 20px;
+      height: 20px;
+      font-size: 0;
+      background-color: transparent;
+      position: absolute;
+      right: 0;
+      bottom: 2px;
+      background-image: url('../images/icons/search.png');
+      background-size: contain;
+      background-position: center;
+      cursor: pointer;
+      border: none;
+
+      &:hover {
+        background-image: url('../images/icons/search-blue.png');
+      }
+    }
+
+    .search-field {
+      width: 100%;
+      padding: 3px 25px 3px 0;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      color: #121212;
+      border: none;
+      border-bottom: 1px solid #121212;
+    }
+  }
+
+  .select {
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    right: 0;
+
+    .list {
+      list-style: none;
+      width: 300px;
+      background-color: #fff;
+      border: 1px solid #121212;
+      padding: 10px 15px;
+      height: 100px;
+      overflow-y: scroll;
+      margin: 0;
+
+      li {
+        a {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 18px;
+          color: #121212;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.lang-list {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0;
+  padding: 5px 15px;
+  background-color: #fff;
+  list-style: none;
+  border: 1px solid #121212;
+  transition: opacity ease 0.7s;
+}
+
+.lang:hover {
+  .lang-list {
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999;
+  }
+}

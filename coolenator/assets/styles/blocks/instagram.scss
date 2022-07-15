@@ -1,0 +1,101 @@
+.row {
+  margin-top: 50px;
+  background: #bdf0ff;
+  border-top: 1px solid #121212;
+  border-bottom: 1px solid #121212;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 140%;
+  font-family: 'Asap Condensed', sans-serif;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  a {
+    padding: 20px 0;
+    text-decoration: none;
+    color: #000;
+  }
+
+  span {
+    display: inline-block;
+    padding: 0 40px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: #000;
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+
+    &:last-of-type::before {
+      display: none;
+    }
+  }
+}
+
+.instagram {
+  &-item {
+    padding: 0 5px;
+
+    a {
+      padding: 100% 0 0;
+      position: relative;
+      display: block;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+
+  &-list {
+    @media (max-width: 768px) {
+      margin-top: 80px;
+    }
+  }
+
+  .slick-arrow {
+    position: absolute;
+    top: -165px;
+    right: 20px;
+    width: 36px;
+    height: 23px;
+    background-size: cover;
+
+    @media (max-width: 768px) {
+      top: -50px;
+      right: calc(50% - 60px);
+    }
+
+    &.next {
+      background-image: url('../images/icons/arrow-right.png');
+    }
+
+    &.prev {
+      right: 100px;
+      background-image: url('../images/icons/arrow-left.png');
+
+      @media (max-width: 768px) {
+        right: 50%;
+      }
+    }
+  }
+}

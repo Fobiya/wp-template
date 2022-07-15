@@ -1,0 +1,51 @@
+.join {
+  padding: 160px 0 120px;
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    margin: 0 0 55px;
+    text-align: center;
+  }
+
+  form {
+    display: block;
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+
+    input {
+      width: 100%;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 130%;
+      color: #4b4b4b;
+      padding: 15px 70px 15px 0;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #000;
+    }
+
+    button {
+      width: 62px;
+      height: 56px;
+      background-color: #121212;
+      border: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 99;
+      cursor: pointer;
+    }
+  }
+}

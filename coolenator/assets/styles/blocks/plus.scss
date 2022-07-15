@@ -1,0 +1,76 @@
+.plus {
+  padding: 170px 0;
+  background-image: url('../images/cloud-2.png');
+  background-repeat: no-repeat;
+  background-position: left 114%;
+  overflow: hidden;
+
+  .product & {
+    background-image: none;
+  }
+
+  @media (max-width: 992px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+  }
+
+  &-list {
+    margin: 0 -22px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &-col {
+    padding: 0 22px;
+    width: 25%;
+
+    @media (max-width: 992px) {
+      width: 50%;
+    }
+
+    @media (max-width: 420px) {
+      width: 100%;
+    }
+  }
+
+  &-item {
+    padding: 30px 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: border ease 1s;
+
+    &:hover {
+      border: 1px solid #121212;
+
+      .pic {
+        border: 1px solid #121212;
+      }
+    }
+
+    .pic {
+      transition: border ease 1s;
+      border-radius: 100%;
+      border: 1px solid transparent;
+      width: 142px;
+      height: 142px;
+      margin: 0 auto 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h3 {
+      font-weight: 600;
+      margin: 0;
+      font-size: 24px;
+      line-height: 130%;
+      text-transform: uppercase;
+      font-family: 'Asap Condensed', sans-serif;
+    }
+  }
+}

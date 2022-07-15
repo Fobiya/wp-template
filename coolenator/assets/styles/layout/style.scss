@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+  color: #4b4b4b;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+  color: #4b4b4b;
+}
+
+:-ms-input-placeholder {
+  opacity: 1;
+  color: #4b4b4b;
+}
+
+:-moz-placeholder {
+  opacity: 1;
+  color: #4b4b4b;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #4b4b4b;
+  line-height: 28px;
+
+  &.fixed {
+    overflow: hidden;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 64px;
+  margin: 0;
+  line-height: 140%;
+  color: #121212;
+  font-family: 'Asap Condensed', sans-serif;
+
+  @media (max-width: 768px) {
+    font-size: 52px;
+  }
+}
+
+.container,
+.wp-block-group__inner-container {
+  width: 100%;
+  max-width: 1210px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  padding-bottom: 55px;
+  border-bottom: 1px solid #121212;
+
+  @media (max-width: 768px) {
+    padding-bottom: 20px;
+  }
+
+  h2 {
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
+}
+
+.slick-arrow {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+
+  img {
+    width: 36px;
+    height: 27px;
+  }
+}
+
+.woocommerce table.shop_table {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.woocommerce table.shop_table tr {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #121212;
+  }
+}
+
+.woocommerce table.shop_table td {
+  border: none;
+}
+
+.woocommerce table.shop_table .product-name a {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.34;
+  color: #121212;
+  text-decoration: none;
+}
+
+.woocommerce table.shop_table td {
+  text-align: left;
+}
+
+table.wishlist_table thead th {
+  border: none;
+}
+
+.woocommerce table.shop_table thead tr::after {
+  display: none;
+}
+
+.wishlist-title-container {
+  display: none;
+}
+
+#yith-wcwl-popup-message {
+  display: none !important;
+  overflow: hidden;
+}
+
+.blue-section {
+  border-top: 1px solid #121212;
+  background: linear-gradient(to bottom, #bdf0ff 0%, rgba(189, 240, 255, 0) 100%);
+}
+
+.bg-cloud {
+  background-image: url('../images/section-bg.png');
+  background-position: -70px -414px;
+  background-repeat: no-repeat;
+}
